@@ -1,13 +1,18 @@
 import React, { FC } from "react";
 // import PropTypes from "prop-types";
-import { StyleSheet, Pressable, Text } from "react-native";
+import {
+  StyleSheet,
+  Pressable,
+  Text,
+  GestureResponderEvent,
+} from "react-native";
 import COLORS from "../../../styles/colors";
 
 interface Props {
   title: string;
-  style: any;
-  onPress: any;
-  textStyle?: any;
+  style: {};
+  textStyle?: {};
+  onPress: (event: GestureResponderEvent) => void;
 }
 
 const CustomButton: FC<Props> = ({ title, style, onPress, textStyle }) => {
@@ -25,27 +30,20 @@ const CustomButton: FC<Props> = ({ title, style, onPress, textStyle }) => {
   );
 };
 
-// CustomButton.propTypes = {
-//   title: PropTypes.string,
-//   style: PropTypes.object,
-//   onPress: PropTypes.func,
-//   textStyle: PropTypes.object,
-// };
-
 const styles = StyleSheet.create({
   button: {
-    borderRadius: 8,
+    borderRadius: 25,
     padding: 6,
     height: 50,
-    width: "70%",
+    width: "100%",
     justifyContent: "center",
     alignItems: "center",
-    // backgroundColor: "blue",
     elevation: 5,
     backgroundColor: COLORS.strong_green,
   },
   text: {
     color: "white",
+    fontSize: 14,
   },
 });
 

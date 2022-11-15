@@ -8,9 +8,6 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "include": [
-    "src/components",
-    "src/custom.d.ts"
-  ],
+  "include": ["src/components"],
   "extends": "expo/tsconfig.base"
 }

@@ -9,7 +9,7 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <AppContextProvider userData={{}} isLoggedIn={true}>
+    <AppContextProvider userData={{}} isLoggedIn={false}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen

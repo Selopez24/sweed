@@ -18,9 +18,7 @@ export const AppContextProvider: FC<Props> = ({ children }) => {
   });
 
   return (
-    <AppContext.Provider value={{ userData: {}, isLoggedIn: false }}>
-      {children}
-    </AppContext.Provider>
+    <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
   );
 };
 
