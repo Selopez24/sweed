@@ -1,20 +1,21 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  KeyboardAvoidingView,
+} from "react-native";
 import Logo from "../../assets/Logo";
 import CustomButton from "../components/core/Button/Button";
 import COLORS from "../styles/colors";
 import { Input } from "@rneui/themed";
 import IconButton from "../components/images/IconButton";
- import twitter from "../../assets/twitter-icon.png";
- import facebook from "../../assets/facebook-icon.png";
- import google from "../../assets/google-icon.png";
+import twitter from "../../assets/twitter-icon.png";
+import facebook from "../../assets/facebook-icon.png";
+import google from "../../assets/google-icon.png";
 
 export default function SignUp({ navigation }) {
-  // Imported with require because with 'import' throws an error "Cannot find module 'url:../..public/img/logo.png' or its corresponding type declarations."
-  // const twitter = require("../../assets/twitter-icon.png");
-  // const facebook = require("../../assets/facebook-icon.png");
-  // const google = require("../../assets/google-icon.png");
-
   const handleSocial = () => {
     navigation.navigate("HomeNavigator");
   };
@@ -23,107 +24,105 @@ export default function SignUp({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
-      <Logo style={styles.logo} />
+    <ScrollView style={{ top: 80 }}>
+      <View style={styles.container}>
+        <Logo style={styles.logo} />
 
-      <Input
-        containerStyle={{}}
-        disabledInputStyle={{}}
-        inputContainerStyle={{
-          backgroundColor: "#fff",
-          borderRadius: 6,
-          borderBottomWidth: 0,
-          paddingHorizontal: 10,
-          paddingVertical: 5,
-        }}
-        errorMessage="Please enter a valid username"
-        errorStyle={{}}
-        errorProps={{}}
-        inputStyle={{ color: COLORS.cursor_color, fontSize: 14 }}
-        labelStyle={{ color: "#00ff00" }}
-        labelProps={{}}
-        placeholder="Create your username"
-        cursorColor={COLORS.cursor_color}
-      />
-      <Input
-        containerStyle={{}}
-        disabledInputStyle={{}}
-        inputContainerStyle={{
-          backgroundColor: "#fff",
-          borderRadius: 6,
-          borderBottomWidth: 0,
-          paddingHorizontal: 10,
-          paddingVertical: 5,
-        }}
-        errorMessage=""
-        errorStyle={{}}
-        errorProps={{}}
-        inputStyle={{ color: COLORS.cursor_color, fontSize: 14 }}
-        labelStyle={{ color: "#00ff00" }}
-        labelProps={{}}
-        placeholder="Create your username"
-        cursorColor={COLORS.cursor_color}
-      />
-      <Input
-        containerStyle={{}}
-        disabledInputStyle={{}}
-        inputContainerStyle={{
-          backgroundColor: "#fff",
-          borderRadius: 6,
-          borderBottomWidth: 0,
-          paddingHorizontal: 10,
-          paddingVertical: 5,
-        }}
-        errorMessage=""
-        errorStyle={{}}
-        errorProps={{}}
-        inputStyle={{ color: COLORS.cursor_color, fontSize: 14 }}
-        labelStyle={{ color: "#00ff00" }}
-        labelProps={{}}
-        placeholder="Create your username"
-        cursorColor={COLORS.cursor_color}
-      />
-      <Input
-        containerStyle={{}}
-        disabledInputStyle={{}}
-        inputContainerStyle={{
-          backgroundColor: "#fff",
-          borderRadius: 6,
-          borderBottomWidth: 0,
-          paddingHorizontal: 10,
-          paddingVertical: 5,
-        }}
-        errorMessage=""
-        errorStyle={{}}
-        errorProps={{}}
-        inputStyle={{ color: COLORS.cursor_color, fontSize: 14 }}
-        labelStyle={{ color: "#00ff00" }}
-        labelProps={{}}
-        placeholder="Create your username"
-        cursorColor={COLORS.cursor_color}
-      />
-      <Text>
-        By selecting ‘Sing up’ you agree our terms and statements of privacy.
-        Read them here
-      </Text>
-      <CustomButton
-        style={styles.button}
-        title="Sign Up"
-        onPress={handleSignUp}
-      />
+        <Input
+          inputContainerStyle={{
+            backgroundColor: "#fff",
+            borderRadius: 6,
+            borderBottomWidth: 0,
+          }}
+          errorMessage="Please enter a valid username"
+          inputStyle={{
+            color: COLORS.cursor_color,
+            fontSize: 14,
+            paddingVertical: 5,
+            paddingHorizontal: 8,
+          }}
+          labelStyle={{ color: "#00ff00" }}
+          placeholder="Create your username"
+          cursorColor={COLORS.cursor_color}
+        />
+        <Input
+          inputContainerStyle={{
+            backgroundColor: "#fff",
+            borderRadius: 6,
+            borderBottomWidth: 0,
+          }}
+          errorMessage=""
+          inputStyle={{
+            color: COLORS.cursor_color,
+            fontSize: 14,
+            paddingVertical: 5,
+            paddingHorizontal: 8,
+          }}
+          labelStyle={{ color: "#00ff00" }}
+          placeholder="Your email"
+          cursorColor={COLORS.cursor_color}
+        />
+        <Input
+          inputContainerStyle={{
+            backgroundColor: "#fff",
+            borderRadius: 6,
+            borderBottomWidth: 0,
+          }}
+          // errorMessage="password must be at least 8 characters long"
 
-      <View style={{ flexDirection: "row" }}>
-        <Text style={styles.or}>___________________</Text>
-        <Text style={styles.or}>Or</Text>
-        <Text style={styles.or}>___________________</Text>
+          inputStyle={{
+            color: COLORS.cursor_color,
+            fontSize: 14,
+            paddingVertical: 5,
+            paddingHorizontal: 8,
+          }}
+          labelStyle={{ color: "#00ff00" }}
+          placeholder="Create your password"
+          cursorColor={COLORS.cursor_color}
+        />
+        <Input
+          inputContainerStyle={{
+            backgroundColor: "#fff",
+            borderRadius: 6,
+            borderBottomWidth: 0,
+          }}
+          errorMessage=""
+          inputStyle={{
+            color: COLORS.cursor_color,
+            fontSize: 14,
+            paddingVertical: 5,
+            paddingHorizontal: 8,
+          }}
+          labelStyle={{ color: "#00ff00" }}
+          placeholder="Confirm password"
+          cursorColor={COLORS.cursor_color}
+        />
+        <Text style={styles.privacyText}>
+          By selecting ‘Sing up’ you agree our terms and statements of privacy.
+          Read them <Text style={styles.boldText}>here</Text>
+        </Text>
+        <CustomButton
+          style={styles.button}
+          title="Sign Up"
+          onPress={handleSignUp}
+        />
+
+        <View style={{ flexDirection: "row" }}>
+          <Text style={styles.or}>___________________</Text>
+          <Text style={styles.or}>Or</Text>
+          <Text style={styles.or}>___________________</Text>
+        </View>
+        <Text style={styles.or}>Enter with your social media account</Text>
+        <View style={styles.socialIcons}>
+          <IconButton icon={facebook} onPress={handleSocial} style={{}} />
+          <IconButton icon={twitter} onPress={handleSocial} style={{}} />
+          <IconButton icon={google} onPress={handleSocial} style={{}} />
+        </View>
+        <Text style={styles.privacyText}>
+          Already have an account?<Text style={styles.boldText}> Log in</Text>
+        </Text>
       </View>
-      <Text style={styles.or}>Enter with your social media account</Text>
-      <View style={{ flexDirection: "row", backgroundColor: "transparent" }}>
-        <IconButton icon={facebook} onPress={handleSocial} style={{}} />
-        <IconButton icon={twitter} onPress={handleSocial} style={{}} />
-        <IconButton icon={google} onPress={handleSocial} style={{}} />
-      </View>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -135,11 +134,32 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
   },
   logo: {
-    position: "absolute",
-    top: 60,
+    // position: "absolute",
+    // top: 60,
+    marginBottom: 40,
+  },
+  privacyText: {
+    color: "#767676",
+    fontWeight: "400",
+    fontSize: 14,
+    marginBottom: 33,
+  },
+  boldText: {
+    fontWeight: "600",
+    color: "#231F20",
+    textDecorationLine: "underline",
   },
 
-  button: { width: "100%" },
+  button: { width: "100%", marginBottom: 3 },
+
+  socialIcons: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    alignContent: "space-between",
+    width: "60%",
+  },
+
   textSignUpButton: {
     backgroundColor: "white",
     color: COLORS.strong_green,

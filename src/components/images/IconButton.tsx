@@ -7,9 +7,6 @@ import {
   Image,
   ImageSourcePropType,
 } from "react-native";
-// import twitter from "../../../assets/twitter-icon.png";
-// import facebook from "../../../assets/facebook-icon.png";
-// import google from "../../../assets/google-icon.png";
 
 interface Props {
   icon: ImageSourcePropType;
@@ -18,18 +15,11 @@ interface Props {
 }
 
 const IconButton: FC<Props> = ({ icon, onPress, style }) => {
-  //   const icons = {
-  //     twitter,
-  //     facebook,
-  //     google,
-  //   };
-  //   console.log(typeof twitter);
   return (
     <>
       <Pressable style={styles.button} onPress={onPress}>
         <Image source={icon} />
       </Pressable>
-      {/* <Text>{JSON.stringify(icons[icon])}</Text> */}
     </>
   );
 };
@@ -41,6 +31,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "transparent",
+    marginBottom: 22,
   },
   text: {
     color: "white",
