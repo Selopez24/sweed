@@ -6,7 +6,7 @@ import COLORS from "../styles/colors";
 
 export default function Login({ navigation }) {
   const handleLogin = () => {
-    navigation.navigate("HomeNavigator");
+    navigation.navigate("LoginView");
   };
   const handleSignUp = () => {
     navigation.navigate("SignUp");

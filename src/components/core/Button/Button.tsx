@@ -40,10 +40,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     elevation: 5,
     backgroundColor: COLORS.strong_green,
+    marginBottom: 22,
   },
   text: {
     color: "white",
-    fontSize: 14,
+    fontSize: 16,
+    fontWeight: "700",
   },
 });
 

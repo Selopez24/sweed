@@ -2,7 +2,6 @@ import React, { FC } from "react";
 import {
   StyleSheet,
   Pressable,
-  Text,
   GestureResponderEvent,
   Image,
   ImageSourcePropType,
