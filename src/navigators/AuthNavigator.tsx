@@ -12,9 +12,9 @@ const AuthNavigator = () => {
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="LoginView" component={LoginView} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="SignUp" component={SignUp} />
+      <Stack.Screen name="LoginView" component={LoginView} />
     </Stack.Navigator>
   );
 };

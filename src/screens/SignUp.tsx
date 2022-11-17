@@ -17,6 +17,9 @@ export default function SignUp({ navigation }) {
   const handleSignUp = () => {
     navigation.navigate("AuthNavigator");
   };
+  const handleLogin = () => {
+    navigation.navigate("LoginView");
+  };
 
   return (
     <ScrollView style={{ top: 80 }}>
@@ -122,7 +125,11 @@ export default function SignUp({ navigation }) {
           <IconButton icon={google} onPress={handleSocial} style={{}} />
         </View>
         <Text style={styles.privacyText}>
-          Already have an account?<Text style={styles.boldText}> Log in</Text>
+          Already have an account?
+          <Text style={styles.boldText} onPress={handleLogin}>
+            {" "}
+            Log in
+          </Text>
         </Text>
       </View>
     </ScrollView>
