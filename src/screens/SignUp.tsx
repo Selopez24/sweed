@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  KeyboardAvoidingView,
-} from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import Logo from "../../assets/Logo";
 import CustomButton from "../components/core/Button/Button";
 import COLORS from "../styles/colors";
@@ -14,6 +8,7 @@ import IconButton from "../components/images/IconButton";
 import twitter from "../../assets/twitter-icon.png";
 import facebook from "../../assets/facebook-icon.png";
 import google from "../../assets/google-icon.png";
+import Icon from "react-native-vector-icons/Ionicons";
 
 export default function SignUp({ navigation }) {
   const handleSocial = () => {
@@ -67,6 +62,7 @@ export default function SignUp({ navigation }) {
             backgroundColor: "#fff",
             borderRadius: 6,
             borderBottomWidth: 0,
+            paddingRight: 5,
           }}
           // errorMessage="password must be at least 8 characters long"
 
@@ -79,12 +75,16 @@ export default function SignUp({ navigation }) {
           labelStyle={{ color: "#00ff00" }}
           placeholder="Create your password"
           cursorColor={COLORS.cursor_color}
+          textContentType="password"
+          secureTextEntry={true}
+          rightIcon={<Icon name="eye-off-outline" size={20} />}
         />
         <Input
           inputContainerStyle={{
             backgroundColor: "#fff",
             borderRadius: 6,
             borderBottomWidth: 0,
+            paddingRight: 5,
           }}
           errorMessage=""
           inputStyle={{
@@ -96,6 +96,9 @@ export default function SignUp({ navigation }) {
           labelStyle={{ color: "#00ff00" }}
           placeholder="Confirm password"
           cursorColor={COLORS.cursor_color}
+          textContentType="password"
+          secureTextEntry={true}
+          rightIcon={<Icon name="eye-off-outline" size={20} />}
         />
         <Text style={styles.privacyText}>
           By selecting ‘Sing up’ you agree our terms and statements of privacy.
