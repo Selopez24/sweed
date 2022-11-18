@@ -17,6 +17,9 @@ export default function LoginView({ navigation }) {
   const handleLogin = () => {
     navigation.navigate("HomeNavigator");
   };
+  const toSignUp = () => {
+    navigation.navigate("SignUp");
+  };
 
   return (
     <ScrollView style={{ top: 80 }}>
@@ -87,7 +90,11 @@ export default function LoginView({ navigation }) {
           <IconButton icon={google} onPress={handleSocial} style={{}} />
         </View>
         <Text>
-          Not registered?<Text style={styles.boldText}> Sign up</Text>
+          Not registered?
+          <Text style={styles.boldText} onPress={toSignUp}>
+            {" "}
+            Sign up
+          </Text>
         </Text>
       </View>
     </ScrollView>
