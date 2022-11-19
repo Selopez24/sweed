@@ -22,7 +22,7 @@ export default function SignUp({ navigation }) {
   };
 
   return (
-    <ScrollView style={{ top: 80 }}>
+    <ScrollView>
       <View style={styles.container}>
         <Logo style={styles.logo} />
 
@@ -138,15 +138,13 @@ export default function SignUp({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    marginTop: 40,
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 40,
   },
   logo: {
-    // position: "absolute",
-    // top: 60,
-    marginBottom: 40,
+    marginBottom: 38,
   },
   privacyText: {
     color: "#767676",

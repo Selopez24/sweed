@@ -5,12 +5,12 @@ import CustomButton from "../components/core/Button/Button";
 import COLORS from "../styles/colors";
 import { Input } from "@rneui/themed";
 import IconButton from "../components/images/IconButton";
-import twitter from "../../assets/twitter-icon.png";
-import facebook from "../../assets/facebook-icon.png";
-import google from "../../assets/google-icon.png";
 import Icon from "react-native-vector-icons/Ionicons";
 
 export default function LoginView({ navigation }) {
+  const twitter = require("../../assets/twitter-icon.png");
+  const facebook = require("../../assets/facebook-icon.png");
+  const google = require("../../assets/google-icon.png");
   const handleSocial = () => {
     navigation.navigate("HomeNavigator");
   };
@@ -22,7 +22,7 @@ export default function LoginView({ navigation }) {
   };
 
   return (
-    <ScrollView style={{ top: 80 }}>
+    <ScrollView>
       <View style={styles.container}>
         <Logo style={styles.logo} />
 
@@ -103,7 +103,7 @@ export default function LoginView({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    marginTop: 40,
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 40,

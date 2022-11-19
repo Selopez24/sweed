@@ -30,7 +30,6 @@ const Logo = ({ style }) => {
   );
 };
 
-export default Logo;
 const styles = StyleSheet.create({
   logo: {
     margin: 50,
@@ -39,3 +38,4 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+export default Logo;

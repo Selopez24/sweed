@@ -1,11 +1,22 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import Post from "../components/core/Post";
-import ghost from "../../assets/ghost.webp";
+const ghost = require("../../assets/ghost.webp");
+const weedPost = require("../../assets/weed-post.jpg");
+const weed2 = require("../../assets/weed2.jpg");
 
 const Home = () => {
   return (
-    <View style={styles.homeContainer}>
+    <ScrollView style={styles.homeContainer}>
+      <Post
+        avatarImage={ghost}
+        username={"parapeto"}
+        sweet={
+          "Este es un comentario o es un tuit? ¿cómo se llama el contenido del post? será un sweed?sld,  kfweaa oewk cm ceemcm e  ekopekdoke e eokdkokd ekfk  "
+        }
+        date={new Date()}
+        postImage={weedPost}
+      />
       <Post
         avatarImage={ghost}
         username={"parapeto"}
@@ -13,17 +24,35 @@ const Home = () => {
           "Este es un comentario o es un tuit? ¿cómo se llama el contenido del post? será un sweed? "
         }
         date={new Date()}
+        // postImage={weed2}
       />
-    </View>
+      <Post
+        avatarImage={ghost}
+        username={"parapeto"}
+        sweet={
+          "Este es un comentario o es un tuit? ¿cómo se llama el contenido del post? será un sweed? kacmdmcasmafo sdmsam dmfsfmkma sfioajf,x "
+        }
+        date={new Date()}
+        // postImage={weedPost}
+      />
+      <Post
+        avatarImage={ghost}
+        username={"parapeto"}
+        sweet={
+          "Este es un comentario o es un tuit? ¿cómo se llama el contenido del post? será un sweed? "
+        }
+        date={new Date()}
+        postImage={weedPost}
+      />
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   homeContainer: {
     width: "100%",
-    height: 300,
-
-    padding: 5,
+    margin: 0,
+    paddingHorizontal: 5,
   },
 });
 
