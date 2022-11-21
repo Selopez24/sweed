@@ -15,7 +15,7 @@ const Home = () => {
           "Este es un comentario o es un tuit? ¿cómo se llama el contenido del post? será un sweed?sld,  kfweaa oewk cm ceemcm e  ekopekdoke e eokdkokd ekfk  "
         }
         date={new Date()}
-        postImage={weedPost}
+        postImage={[weedPost]}
       />
       <Post
         avatarImage={ghost}
@@ -24,7 +24,16 @@ const Home = () => {
           "Este es un comentario o es un tuit? ¿cómo se llama el contenido del post? será un sweed? "
         }
         date={new Date()}
-        // postImage={weed2}
+        postImage={[weed2, weedPost]}
+      />
+      <Post
+        avatarImage={ghost}
+        username={"parapeto"}
+        sweet={
+          "Este es un comentario o es un tuit? ¿cómo se llama el contenido del post? será un sweed? "
+        }
+        date={new Date()}
+        postImage={[]}
       />
       <Post
         avatarImage={ghost}
@@ -33,7 +42,7 @@ const Home = () => {
           "Este es un comentario o es un tuit? ¿cómo se llama el contenido del post? será un sweed? kacmdmcasmafo sdmsam dmfsfmkma sfioajf,x "
         }
         date={new Date()}
-        // postImage={weedPost}
+        postImage={[weed2, weedPost, weed2]}
       />
       <Post
         avatarImage={ghost}
@@ -42,7 +51,7 @@ const Home = () => {
           "Este es un comentario o es un tuit? ¿cómo se llama el contenido del post? será un sweed? "
         }
         date={new Date()}
-        postImage={weedPost}
+        postImage={[weed2, weedPost, weed2, weedPost]}
       />
     </ScrollView>
   );

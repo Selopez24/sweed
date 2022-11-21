@@ -21,7 +21,11 @@ const PostImages: FC<ImageProps> = ({ style, postImage }) => {
 };
 
 const styles = StyleSheet.create({
-  imageContainer: { width: "100%", flexGrow: 1, padding: 10 },
+  imageContainer: {
+    width: "100%",
+    flexGrow: 1,
+    // padding: 10,
+  },
 });
 
 export default PostImages;

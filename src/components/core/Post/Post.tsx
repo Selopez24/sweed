@@ -1,17 +1,13 @@
 import React, { FC } from "react";
 import {
-  FlatList,
   Image,
   ImageSourcePropType,
   Pressable,
-  ScrollView,
   StyleSheet,
   Text,
   View,
 } from "react-native";
 import Icon from "react-native-vector-icons/Entypo";
-import FontIcon from "react-native-vector-icons/FontAwesome";
-import { Image as ImageElement } from "@rneui/themed";
 import PostImages from "../PostImages/PostImages";
 
 interface PostProps {
@@ -19,7 +15,7 @@ interface PostProps {
   username: string;
   sweet: string;
   date?: Date;
-  postImage?: ImageSourcePropType;
+  postImage: ImageSourcePropType[];
   favorites?: number;
   comments?: number;
   share?: number;
@@ -35,9 +31,9 @@ const Post: FC<PostProps> = ({
   comments,
   share,
 }) => {
-  const month = date!.getUTCMonth() + 1;
-  const day = date!.getUTCDate();
-  const year = date!.getFullYear();
+  // const month = date!.getUTCMonth() + 1;
+  // const day = date!.getUTCDate();
+  // const year = date!.getFullYear();
 
   return (
     <View style={styles.container}>
@@ -56,17 +52,34 @@ const Post: FC<PostProps> = ({
         </View>
         <View style={styles.contentContainer}>
           <Text style={styles.content}>{sweet}</Text>
-          {postImage && (
-            <>
-              <View style={styles.imageContainers}>
-                <PostImages postImage={postImage} style={styles.postImages} />
-                <PostImages postImage={postImage} style={styles.postImages} />
-                <PostImages postImage={postImage} style={styles.postImages} />
-                {/* <PostImages postImage={postImage} style={styles.postImages} /> */}
-                {/* <PostImages postImage={postImage!} style={styles.postImages} /> */}
-              </View>
-            </>
-          )}
+
+          {postImage?.length > 0 ? (
+            <View style={styles.imageContainers}>
+              {postImage.map((image, i) => (
+                <PostImages
+                  style={[
+                    styles.postImages,
+                    {
+                      top: -0,
+                      left:
+                        postImage.length === 1
+                          ? 0
+                          : postImage.length === 2
+                          ? i * 72
+                          : postImage.length === 3
+                          ? i * 55
+                          : i * 38,
+                      minWidth: 240,
+                      width: `${100 - 20 * (postImage.length - 1)}%`,
+                      zIndex: 5 - i,
+                    },
+                  ]}
+                  postImage={image}
+                  key={i}
+                />
+              ))}
+            </View>
+          ) : null}
         </View>
         <View style={styles.reactionsContainer}>
           <Pressable>
@@ -126,8 +139,6 @@ const styles = StyleSheet.create({
     color: "#696969",
   },
   contentContainer: {
-    // borderWidth: 2,
-    // maxHeight: 320,
     width: "100%",
   },
   content: {
@@ -140,26 +151,19 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "center",
-    alignContent: "center",
-    alignItems: "center",
-    maxHeight: 950,
-    minHeight: 230,
-    flex: 1,
-    borderWidth: 1,
-    borderColor: "#a9a9a9",
-    borderRadius: 10,
+    position: "relative",
+    height: 230,
   },
   postImages: {
-    width: "100%",
-    maxHeight: 200,
+    maxHeight: 220,
     borderRadius: 5,
-    // aspectRatio: 1.45,
     overflow: "hidden",
-    flex: 1,
     margin: 1,
-    flexGrow: 3,
+    borderWidth: 3,
+    borderColor: "#e9e9e9",
+    position: "absolute",
   },
+
   reactionsContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
