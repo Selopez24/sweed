@@ -1,16 +1,18 @@
 import React from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { Input } from "@rneui/themed";
 import Logo from "../../assets/Logo";
 import CustomButton from "../components/core/Button/Button";
-import COLORS from "../styles/colors";
-import { Input } from "@rneui/themed";
 import IconButton from "../components/images/IconButton";
-import twitter from "../../assets/twitter-icon.png";
-import facebook from "../../assets/facebook-icon.png";
-import google from "../../assets/google-icon.png";
+import COLORS from "../styles/colors";
+
 import Icon from "react-native-vector-icons/Ionicons";
 
 export default function SignUp({ navigation }) {
+  const twitter = require("../../assets/twitter-icon.png");
+  const facebook = require("../../assets/facebook-icon.png");
+  const google = require("../../assets/google-icon.png");
+
   const handleSocial = () => {
     navigation.navigate("HomeNavigator");
   };

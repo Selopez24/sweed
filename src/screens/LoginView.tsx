@@ -11,6 +11,7 @@ export default function LoginView({ navigation }) {
   const twitter = require("../../assets/twitter-icon.png");
   const facebook = require("../../assets/facebook-icon.png");
   const google = require("../../assets/google-icon.png");
+
   const handleSocial = () => {
     navigation.navigate("HomeNavigator");
   };

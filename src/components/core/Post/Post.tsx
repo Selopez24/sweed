@@ -1,3 +1,5 @@
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { FC } from "react";
 import {
   Image,
@@ -9,6 +11,7 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Entypo";
 import PostImages from "../PostImages/PostImages";
+import { HomeStackParams } from "../../../navigators/HomeNavigator";
 
 interface PostProps {
   avatarImage?: ImageSourcePropType;
@@ -31,15 +34,18 @@ const Post: FC<PostProps> = ({
   comments,
   share,
 }) => {
-  // const month = date!.getUTCMonth() + 1;
-  // const day = date!.getUTCDate();
-  // const year = date!.getFullYear();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<HomeStackParams>>();
+
+  const toProfile = () => {
+    navigation.navigate("Profile");
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.post}>
         <View style={styles.postHeader}>
-          <Pressable>
+          <Pressable onPress={toProfile}>
             <Image source={avatarImage} style={styles.avatarImage} />
           </Pressable>
           <View style={styles.usernameContainer}>
