@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
-import Logo from "../../assets/Logo";
+// @ts-ignore
+import Logo from "../../assets/logo.svg";
 import CustomButton from "../components/core/Button/Button";
 import COLORS from "../styles/colors";
 import { Input } from "@rneui/themed";
@@ -42,7 +43,7 @@ export default function LoginView({ navigation }) {
               paddingHorizontal: 8,
             }}
             labelStyle={{ color: "#00ff00" }}
-            placeholder="CWrite your username"
+            placeholder="Write your username"
             cursorColor={COLORS.cursor_color}
           />
 
@@ -62,7 +63,7 @@ export default function LoginView({ navigation }) {
               paddingHorizontal: 8,
             }}
             labelStyle={{ color: "#00ff00" }}
-            placeholder="Create your password"
+            placeholder="Introduce your password"
             cursorColor={COLORS.cursor_color}
             textContentType="password"
             secureTextEntry={true}
@@ -104,7 +105,7 @@ export default function LoginView({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 40,
+    marginTop: 60,
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 40,

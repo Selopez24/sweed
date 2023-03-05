@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import Logo from "../../assets/Logo";
+// @ts-ignore
+import Logo from "../../assets/logo.svg";
 import CustomButton from "../components/core/Button/Button";
 import COLORS from "../styles/colors";
 
@@ -14,7 +15,9 @@ export default function Login({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Logo style={styles.logo} />
+      <View style={styles.logo}>
+        <Logo />
+      </View>
 
       <CustomButton
         style={styles.button}
@@ -48,7 +51,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     position: "absolute",
-    top: 60,
+    top: 100,
   },
 
   button: { width: "100%" },

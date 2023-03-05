@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import {
   View,
   FlatList,
@@ -12,7 +12,7 @@ interface ImageProps {
   style: {};
 }
 
-const PostImages: FC<ImageProps> = ({ style, postImage }) => {
+const PostImages = ({ style, postImage }: ImageProps) => {
   return (
     <View style={styles.imageContainer}>
       <Image source={postImage} style={style} />

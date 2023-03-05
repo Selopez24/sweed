@@ -1,7 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { Input } from "@rneui/themed";
-import Logo from "../../assets/Logo";
+// @ts-ignore
+import Logo from "../../assets/logo.svg";
 import CustomButton from "../components/core/Button/Button";
 import IconButton from "../components/images/IconButton";
 import COLORS from "../styles/colors";
@@ -140,7 +141,7 @@ export default function SignUp({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 40,
+    marginTop: 60,
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 40,

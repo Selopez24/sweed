@@ -1,6 +1,6 @@
+import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import React, { FC } from "react";
 import {
   Image,
   ImageSourcePropType,
@@ -14,7 +14,7 @@ import PostImages from "../PostImages/PostImages";
 import { HomeStackParams } from "../../../navigators/HomeNavigator";
 
 interface PostProps {
-  avatarImage?: ImageSourcePropType;
+  avatarImage: ImageSourcePropType;
   username: string;
   sweet: string;
   date?: Date;
@@ -24,7 +24,7 @@ interface PostProps {
   share?: number;
 }
 
-const Post: FC<PostProps> = ({
+const Post = ({
   avatarImage,
   username,
   sweet,
@@ -33,7 +33,7 @@ const Post: FC<PostProps> = ({
   favorites,
   comments,
   share,
-}) => {
+}: PostProps) => {
   const navigation =
     useNavigation<NativeStackNavigationProp<HomeStackParams>>();
 

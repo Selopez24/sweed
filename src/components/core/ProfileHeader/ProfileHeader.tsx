@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import {
   View,
   Text,
@@ -9,10 +9,10 @@ import {
 } from "react-native";
 
 interface ProfileHeaderProps {
-  avatarImage?: ImageSourcePropType;
+  avatarImage: ImageSourcePropType;
 }
 
-const ProfileHeader: FC<ProfileHeaderProps> = ({ avatarImage }) => {
+const ProfileHeader = ({ avatarImage }: ProfileHeaderProps) => {
   return (
     <View style={styles.profileHeaderConatiner}>
       <View style={styles.profileBanner}>

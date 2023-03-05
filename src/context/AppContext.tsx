@@ -1,17 +1,17 @@
-import React, { useState, FC } from "react";
+import React, { useState } from "react";
 
-interface Props {
-  children?: React.ReactNode;
-  userData: {};
-  isLoggedIn: boolean;
-}
+// interface Props {
+//   children?: React.ReactNode;
+//   userData: {};
+//   isLoggedIn: boolean;
+// }
 
 export const AppContext = React.createContext({
   userData: {},
   isLoggedIn: false,
 });
 
-export const AppContextProvider: FC<Props> = ({ children }) => {
+export const AppContextProvider = ({ children }) => {
   const [contextValue, setContextValue] = useState({
     userData: {},
     isLoggedIn: false,

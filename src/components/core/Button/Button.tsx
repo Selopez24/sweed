@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 // import PropTypes from "prop-types";
 import {
   StyleSheet,
@@ -15,7 +15,7 @@ interface Props {
   onPress: (event: GestureResponderEvent) => void;
 }
 
-const CustomButton: FC<Props> = ({ title, style, onPress, textStyle }) => {
+const CustomButton = ({ title, style, onPress, textStyle }: Props) => {
   return (
     <Pressable
       style={({ pressed }) => [

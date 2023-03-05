@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import {
   StyleSheet,
   Pressable,
@@ -13,7 +13,7 @@ interface Props {
   style: {};
 }
 
-const IconButton: FC<Props> = ({ icon, onPress, style }) => {
+const IconButton = ({ icon, onPress, style }: Props) => {
   return (
     <>
       <Pressable style={styles.button} onPress={onPress}>
