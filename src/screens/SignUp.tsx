@@ -8,14 +8,14 @@ import Logo from "../../assets/logo.svg";
 import CustomButton from "../components/core/Button/Button";
 import { IconButton } from "../components/core/Icons/IconButton";
 import { AuthStackParams } from "src/navigators/AuthNavigator";
+import Google from "../../assets/icons/google.svg";
+import Facebook from "../../assets/icons/facebook.svg";
+import Twitter from "../../assets/icons/twitter.svg";
 
 type Props = NativeStackScreenProps<AuthStackParams, "SignUp">;
 
 export default function SignUp({ navigation }: Props) {
-  const twitter = require("../../assets/twitter-icon.png");
-  const facebook = require("../../assets/facebook-icon.png");
-  const google = require("../../assets/google-icon.png");
-
+ 
   const handleSocial = () => {
     return null;
   };
@@ -31,6 +31,7 @@ export default function SignUp({ navigation }: Props) {
       <View style={styles.container}>
         <Logo style={styles.logo} />
 
+        <Input errorMessage="" placeholder="Create your username" />
         <Input errorMessage="" placeholder="Your first name" />
         <Input errorMessage="" placeholder="Your last name" />
         <Input errorMessage="" placeholder="Your email" />
@@ -60,9 +61,9 @@ export default function SignUp({ navigation }: Props) {
         </View>
         <Text style={styles.or}>Enter with your social media account</Text>
         <View style={styles.socialIcons}>
-          <IconButton icon={facebook} onPress={handleSocial} style={{}} />
-          <IconButton icon={twitter} onPress={handleSocial} style={{}} />
-          <IconButton icon={google} onPress={handleSocial} style={{}} />
+          <IconButton icon={<Facebook />} onPress={handleSocial} />
+          <IconButton icon={<Twitter />} onPress={handleSocial} />
+          <IconButton icon={<Google />} onPress={handleSocial} />
         </View>
         <Text style={styles.privacyText}>
           Already have an account?

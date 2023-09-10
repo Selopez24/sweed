@@ -8,11 +8,7 @@ interface Props {
 }
 
 const CustomButton = ({ title, onPress }: Props) => {
-  return (
-    <View style={styles.container}>
-      <Button title={title} onPress={onPress} />
-    </View>
-  );
+  return <Button title={title} onPress={onPress} />;
 };
 
 const styles = StyleSheet.create({

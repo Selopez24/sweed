@@ -1,39 +1,14 @@
-import React from "react";
-import {
-  StyleSheet,
-  Pressable,
-  GestureResponderEvent,
-  Image,
-  ImageSourcePropType,
-} from "react-native";
+import { Button } from "@rneui/base";
+import React, { ReactNode, ReactElement } from "react";
+import { StyleSheet, GestureResponderEvent } from "react-native";
 
 interface Props {
-  icon: ImageSourcePropType;
   onPress: (event: GestureResponderEvent) => void;
-  style: {};
+  icon: ReactElement;
 }
 
-export const IconButton = ({ icon, onPress, style }: Props) => {
-  return (
-    <>
-      <Pressable style={styles.button} onPress={onPress}>
-        <Image source={icon} />
-      </Pressable>
-    </>
-  );
+export const IconButton = ({ icon, onPress }: Props) => {
+  return <Button onPress={onPress} type="clear" icon={icon} />;
 };
 
-const styles = StyleSheet.create({
-  button: {
-    borderRadius: 25,
-    padding: 6,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "transparent",
-    marginBottom: 22,
-  },
-  text: {
-    color: "white",
-    fontSize: 14,
-  },
-});
+

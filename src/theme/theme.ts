@@ -37,6 +37,9 @@ export const theme = createTheme({
         fontSize: 16,
         fontWeight: "700",
       },
+      containerStyle: {
+        width: "100%",
+      },
     },
   },
 });
