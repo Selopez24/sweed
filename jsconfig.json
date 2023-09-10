@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
     "strict": true,
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "paths": {
-      "@app/*": [
-        "src/*"
-      ]
+      "src/*": ["src/*"],
+      "components/*": ["src/components/*"]
     }
   }
 }
