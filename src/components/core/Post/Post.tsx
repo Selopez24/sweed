@@ -37,84 +37,73 @@ const Post = ({
   const navigation =
     useNavigation<NativeStackNavigationProp<HomeStackParams>>();
 
-  const toProfile = () => {
+  const goToProfile = () => {
     navigation.navigate("Profile");
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.post}>
-        <View style={styles.postHeader}>
-          <Pressable onPress={toProfile}>
-            <Image source={avatarImage} style={styles.avatarImage} />
-          </Pressable>
-          <View style={styles.usernameContainer}>
-            <Text style={styles.username}>{username}</Text>
-            {/* <Text style={styles.date}>{`-  ${month}/${day}/${year}`}</Text> */}
-            <Text style={styles.date}>- 1 hour ago</Text>
-          </View>
-          <View style={{ flex: 1 }}></View>
+    <View style={styles.post}>
+      <View style={styles.postHeader}>
+        <Pressable onPress={goToProfile}>
+          <Image source={avatarImage} style={styles.avatarImage} />
+        </Pressable>
+        <View style={styles.postInfoContainer}>
+          <Text style={styles.username}>{username}</Text>
+          <Text style={styles.date}>- 1 hour ago</Text>
+        </View>
+        <View style={{ marginLeft: "auto" }}>
           <Icon name="dots-three-horizontal" style={styles.icon} />
         </View>
-        <View style={styles.contentContainer}>
-          <Text style={styles.content}>{sweet}</Text>
+      </View>
+      <View style={styles.content}>
+        <Text style={styles.text}>{sweet}</Text>
 
-          {postImage?.length > 0 ? (
-            <View style={styles.imageContainers}>
-              {postImage.map((image, i) => (
-                <PostImages
-                  style={[
-                    styles.postImages,
-                    {
-                      top: -0,
-                      left:
-                        postImage.length === 1
-                          ? 0
-                          : postImage.length === 2
-                          ? i * 72
-                          : postImage.length === 3
-                          ? i * 55
-                          : i * 38,
-                      minWidth: 240,
-                      width: `${100 - 20 * (postImage.length - 1)}%`,
-                      zIndex: 5 - i,
-                    },
-                  ]}
-                  postImage={image}
-                  key={i}
-                />
-              ))}
-            </View>
-          ) : null}
-        </View>
-        <View style={styles.reactionsContainer}>
-          <Pressable>
-            <Text style={styles.reactIcon}>Reaction</Text>
-          </Pressable>
-          <Pressable>
-            <Text style={styles.reactIcon}>Comment</Text>
-          </Pressable>
-          <Pressable>
-            <Text style={styles.reactIcon}>Repost</Text>
-          </Pressable>
-          <Pressable>
-            <Text style={styles.reactIcon}>Send</Text>
-          </Pressable>
-          {/* <FontIcon name="heart" style={styles.reactIcon} />
-          <FontIcon name="comment-o" style={styles.reactIcon} />
-          <FontIcon name="retweet" style={styles.reactIcon} /> */}
-        </View>
+        {postImage?.length > 0 ? (
+          <View style={styles.imageContainers}>
+            {postImage.map((image, i) => (
+              <PostImages
+                style={[
+                  styles.postImages,
+                  {
+                    top: -0,
+                    left:
+                      postImage.length === 1
+                        ? 0
+                        : postImage.length === 2
+                        ? i * 72
+                        : postImage.length === 3
+                        ? i * 55
+                        : i * 38,
+                    minWidth: 240,
+                    width: `${100 - 20 * (postImage.length - 1)}%`,
+                    zIndex: 5 - i,
+                  },
+                ]}
+                postImage={image}
+                key={i}
+              />
+            ))}
+          </View>
+        ) : null}
+      </View>
+      <View style={styles.actionsContainer}>
+        <Pressable>
+          <Text style={styles.reactIcon}>Reaction</Text>
+        </Pressable>
+        <Pressable>
+          <Text style={styles.reactIcon}>Comment</Text>
+        </Pressable>
+        <Pressable>
+          <Text style={styles.reactIcon}>Repost</Text>
+        </Pressable>
+        <Pressable>
+          <Text style={styles.reactIcon}>Send</Text>
+        </Pressable>
       </View>
     </View>
   );
 };
 const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    borderBottomColor: "#a9a9a9",
-    borderBottomWidth: 1,
-    padding: 15,
-  },
   avatarImage: {
     width: 52,
     height: 52,
@@ -123,6 +112,9 @@ const styles = StyleSheet.create({
   },
   post: {
     width: "100%",
+    borderBottomColor: "#a9a9a9",
+    borderBottomWidth: 1,
+    padding: 15,
   },
   postHeader: {
     flexDirection: "row",
@@ -131,7 +123,7 @@ const styles = StyleSheet.create({
     width: "100%",
     marginBottom: 11,
   },
-  usernameContainer: {
+  postInfoContainer: {
     flexDirection: "row",
     textAlignVertical: "center",
     justifyContent: "space-between",
@@ -144,10 +136,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#696969",
   },
-  contentContainer: {
+  content: {
     width: "100%",
   },
-  content: {
+  text: {
     fontSize: 14,
     fontWeight: "400",
     color: "#090909",
@@ -170,7 +162,7 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
 
-  reactionsContainer: {
+  actionsContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 12,

@@ -1,27 +1,29 @@
 import React from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Input } from "@rneui/themed";
-// @ts-ignore
-import Logo from "../../assets/logo.svg";
-import CustomButton from "../components/core/Button/Button";
-import IconButton from "../components/images/IconButton";
-import COLORS from "../styles/colors";
-
 import Icon from "react-native-vector-icons/Ionicons";
 
-export default function SignUp({ navigation }) {
+import Logo from "../../assets/logo.svg";
+import CustomButton from "../components/core/Button/Button";
+import { IconButton } from "../components/core/Icons/IconButton";
+import { AuthStackParams } from "src/navigators/AuthNavigator";
+
+type Props = NativeStackScreenProps<AuthStackParams, "SignUp">;
+
+export default function SignUp({ navigation }: Props) {
   const twitter = require("../../assets/twitter-icon.png");
   const facebook = require("../../assets/facebook-icon.png");
   const google = require("../../assets/google-icon.png");
 
   const handleSocial = () => {
-    navigation.navigate("HomeNavigator");
+    return null;
   };
   const handleSignUp = () => {
-    navigation.navigate("AuthNavigator");
+    navigation.navigate("SignUp");
   };
   const handleLogin = () => {
-    navigation.navigate("LoginView");
+    navigation.navigate("Login");
   };
 
   return (
@@ -29,79 +31,18 @@ export default function SignUp({ navigation }) {
       <View style={styles.container}>
         <Logo style={styles.logo} />
 
+        <Input errorMessage="" placeholder="Your first name" />
+        <Input errorMessage="" placeholder="Your last name" />
+        <Input errorMessage="" placeholder="Your email" />
         <Input
-          inputContainerStyle={{
-            backgroundColor: "#fff",
-            borderRadius: 6,
-            borderBottomWidth: 0,
-          }}
-          errorMessage="Please enter a valid username"
-          inputStyle={{
-            color: COLORS.cursor_color,
-            fontSize: 14,
-            paddingVertical: 5,
-            paddingHorizontal: 8,
-          }}
-          labelStyle={{ color: "#00ff00" }}
-          placeholder="Create your username"
-          cursorColor={COLORS.cursor_color}
-        />
-        <Input
-          inputContainerStyle={{
-            backgroundColor: "#fff",
-            borderRadius: 6,
-            borderBottomWidth: 0,
-          }}
-          errorMessage=""
-          inputStyle={{
-            color: COLORS.cursor_color,
-            fontSize: 14,
-            paddingVertical: 5,
-            paddingHorizontal: 8,
-          }}
-          labelStyle={{ color: "#00ff00" }}
-          placeholder="Your email"
-          cursorColor={COLORS.cursor_color}
-        />
-        <Input
-          inputContainerStyle={{
-            backgroundColor: "#fff",
-            borderRadius: 6,
-            borderBottomWidth: 0,
-            paddingRight: 5,
-          }}
-          // errorMessage="password must be at least 8 characters long"
-
-          inputStyle={{
-            color: COLORS.cursor_color,
-            fontSize: 14,
-            paddingVertical: 5,
-            paddingHorizontal: 8,
-          }}
-          labelStyle={{ color: "#00ff00" }}
           placeholder="Create your password"
-          cursorColor={COLORS.cursor_color}
           textContentType="password"
           secureTextEntry={true}
           rightIcon={<Icon name="eye-off-outline" size={20} />}
         />
         <Input
-          inputContainerStyle={{
-            backgroundColor: "#fff",
-            borderRadius: 6,
-            borderBottomWidth: 0,
-            paddingRight: 5,
-          }}
           errorMessage=""
-          inputStyle={{
-            color: COLORS.cursor_color,
-            fontSize: 14,
-            paddingVertical: 5,
-            paddingHorizontal: 8,
-          }}
-          labelStyle={{ color: "#00ff00" }}
           placeholder="Confirm password"
-          cursorColor={COLORS.cursor_color}
           textContentType="password"
           secureTextEntry={true}
           rightIcon={<Icon name="eye-off-outline" size={20} />}
@@ -110,11 +51,7 @@ export default function SignUp({ navigation }) {
           By selecting ‘Sing up’ you agree our terms and statements of privacy.
           Read them <Text style={styles.boldText}>here</Text>
         </Text>
-        <CustomButton
-          style={styles.button}
-          title="Sign Up"
-          onPress={handleSignUp}
-        />
+        <CustomButton title="Sign Up" onPress={handleSignUp} />
 
         <View style={{ flexDirection: "row" }}>
           <Text style={styles.or}>___________________</Text>
@@ -130,7 +67,6 @@ export default function SignUp({ navigation }) {
         <Text style={styles.privacyText}>
           Already have an account?
           <Text style={styles.boldText} onPress={handleLogin}>
-            {" "}
             Log in
           </Text>
         </Text>
@@ -160,9 +96,7 @@ const styles = StyleSheet.create({
     color: "#231F20",
     textDecorationLine: "underline",
   },
-
   button: { width: "100%", marginBottom: 3 },
-
   socialIcons: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -170,13 +104,10 @@ const styles = StyleSheet.create({
     alignContent: "space-between",
     width: "60%",
   },
-
   textSignUpButton: {
     backgroundColor: "white",
-    color: COLORS.strong_green,
     fontWeight: "700",
   },
-
   or: {
     marginHorizontal: 10,
     marginVertical: 20,

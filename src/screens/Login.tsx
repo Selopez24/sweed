@@ -1,65 +1,105 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-// @ts-ignore
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import Logo from "../../assets/logo.svg";
 import CustomButton from "../components/core/Button/Button";
-import COLORS from "../styles/colors";
+import { Input } from "@rneui/themed";
+import Icon from "react-native-vector-icons/Ionicons";
+import { IconButton } from "../components/core/Icons/IconButton";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { AuthStackParams } from "src/navigators/AuthNavigator";
+import { navigate } from "src/helpers/RootNavigation";
 
-export default function Login({ navigation }) {
+const twitter = require("../../assets/twitter-icon.png");
+const facebook = require("../../assets/facebook-icon.png");
+const google = require("../../assets/google-icon.png");
+type Props = NativeStackScreenProps<AuthStackParams, "Login">;
+
+export default function Login({ navigation }: Props) {
+  const handleSocial = () => {};
   const handleLogin = () => {
-    navigation.navigate("LoginView");
+    navigate("HomeNavigator", { screen: "Home" });
   };
-  const handleSignUp = () => {
+  const toSignUp = () => {
     navigation.navigate("SignUp");
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.logo}>
-        <Logo />
+    <ScrollView>
+      <View style={styles.container}>
+        <Logo style={styles.logo} />
+        <View style={styles.formContainer}>
+          <Input
+            errorMessage="Please enter a valid username"
+            placeholder="Write your username"
+          />
+
+          <Input
+            placeholder="Introduce your password"
+            textContentType="password"
+            secureTextEntry={true}
+            rightIcon={<Icon name="eye-off-outline" size={20} />}
+          />
+
+          <Text style={[styles.boldText, styles.forgotText]}>
+            Forgot your password?
+          </Text>
+        </View>
+        <CustomButton title="Login" onPress={handleLogin} />
+
+        <View style={{ flexDirection: "row" }}>
+          <Text style={styles.or}>___________________</Text>
+          <Text style={styles.or}>Or</Text>
+          <Text style={styles.or}>___________________</Text>
+        </View>
+        <Text style={styles.or}>Enter with your social media account</Text>
+        <View style={styles.socialIcons}>
+          <IconButton icon={facebook} onPress={handleSocial} style={{}} />
+          <IconButton icon={twitter} onPress={handleSocial} style={{}} />
+          <IconButton icon={google} onPress={handleSocial} style={{}} />
+        </View>
+        <Text>
+          Not registered?
+          <Text style={styles.boldText} onPress={toSignUp}>
+            Sign up
+          </Text>
+        </Text>
       </View>
-
-      <CustomButton
-        style={styles.button}
-        title="LOG IN"
-        onPress={handleLogin}
-      />
-      <View style={{ flexDirection: "row" }}>
-        <Text style={styles.or}>___________________</Text>
-        <Text style={styles.or}>Or</Text>
-        <Text style={styles.or}>___________________</Text>
-      </View>
-
-      <CustomButton
-        style={styles.textSignUpButton}
-        title="Sign Up"
-        onPress={handleSignUp}
-        textStyle={styles.textSignUpButton}
-      />
-
-      {/* <Text style={styles.forgotPassword}>Forgot Password</Text> */}
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    marginTop: 60,
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 40,
   },
-  logo: {
-    position: "absolute",
-    top: 100,
+  formContainer: {
+    width: "100%",
+    marginBottom: 33,
+    justifyContent: "flex-end",
+    alignContent: "flex-end",
+    alignItems: "flex-end",
   },
-
-  button: { width: "100%" },
-  textSignUpButton: {
-    backgroundColor: "white",
-    color: COLORS.strong_green,
-    fontWeight: "700",
-    // height: 17,
+  logo: {
+    marginBottom: 87,
+  },
+  boldText: {
+    textDecorationLine: "underline",
+    color: "#000",
+    fontWeight: "600",
+  },
+  forgotText: {
+    marginTop: -15,
+    marginRight: 15,
+  },
+  socialIcons: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    alignContent: "space-between",
+    width: "60%",
   },
 
   or: {

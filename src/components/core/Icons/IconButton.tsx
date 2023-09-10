@@ -13,7 +13,7 @@ interface Props {
   style: {};
 }
 
-const IconButton = ({ icon, onPress, style }: Props) => {
+export const IconButton = ({ icon, onPress, style }: Props) => {
   return (
     <>
       <Pressable style={styles.button} onPress={onPress}>
@@ -37,5 +37,3 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
 });
-
-export default IconButton;

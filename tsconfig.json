@@ -6,8 +6,15 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": "./",
+    "paths": {
+      "src/*": ["src/*"],
+      "components/*": ["src/components/*"]
+    },
+    "types": ["react", "react-native", "node"]
   },
-  "include": ["src/components"],
+  "include": ["src/**/*", "declarations.d.ts"],
+
   "extends": "expo/tsconfig.base"
 }
