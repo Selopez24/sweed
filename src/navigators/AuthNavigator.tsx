@@ -1,21 +1,22 @@
-import React, { useContext } from "react";
+import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { AppContext } from "../context/AppContext";
-import Login from "../screens/Login";
-import SignUp from "../screens/SignUp";
-import LoginView from "../screens/LoginView";
+import { Auth, Login, SignUp } from "../screens";
 
-const Stack = createNativeStackNavigator();
+export type AuthStackParams = {
+  Auth: any;
+  SignUp: any;
+  Login: any;
+};
+
+const AuthStack = createNativeStackNavigator<AuthStackParams>();
 
 const AuthNavigator = () => {
-  // const { setContextValue } = useContext(AppContext);
-
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="SignUp" component={SignUp} />
-      <Stack.Screen name="LoginView" component={LoginView} />
-    </Stack.Navigator>
+    <AuthStack.Navigator screenOptions={{ headerShown: false }}>
+      <AuthStack.Screen name="Auth" component={Auth} />
+      <AuthStack.Screen name="SignUp" component={SignUp} />
+      <AuthStack.Screen name="Login" component={Login} />
+    </AuthStack.Navigator>
   );
 };
 

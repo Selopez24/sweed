@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -13,15 +13,17 @@ interface ProfileHeaderProps {
 }
 
 const ProfileHeader = ({ avatarImage }: ProfileHeaderProps) => {
+  const [selected, setSelected] = useState<"diaries" | "media" | "all">("all");
+
   return (
     <View style={styles.profileHeaderConatiner}>
       <View style={styles.profileBanner}>
         <Image source={avatarImage} style={styles.avatarImage} />
       </View>
       <View style={styles.userContainer}>
-        <Text style={{ fontWeight: "600", fontSize: 20 }}>User Name</Text>
+        <Text style={styles.userName}>User Name</Text>
         <Text>@username</Text>
-        <Text style={{ marginTop: 11 }}>Biography's description</Text>
+        <Text style={styles.biography}>Biography's description</Text>
       </View>
 
       <View style={styles.followContainer}>
@@ -35,14 +37,53 @@ const ProfileHeader = ({ avatarImage }: ProfileHeaderProps) => {
         </Pressable>
       </View>
       <View style={styles.contentContainer}>
-        <Pressable style={styles.contentButton}>
-          <Text style={styles.textButton}>Followers</Text>
+        <Pressable
+          onPress={() => setSelected("diaries")}
+          style={[
+            styles.contentButton,
+            selected === "diaries" ? styles.selectedButton : null,
+          ]}
+        >
+          <Text
+            style={[
+              styles.textButton,
+              selected === "diaries" ? styles.selecteedText : null,
+            ]}
+          >
+            Diaries
+          </Text>
         </Pressable>
-        <Pressable style={styles.contentButton}>
-          <Text style={styles.textButton}>Following</Text>
+        <Pressable
+          onPress={() => setSelected("all")}
+          style={[
+            styles.contentButton,
+            selected === "all" ? styles.selectedButton : null,
+          ]}
+        >
+          <Text
+            style={[
+              styles.textButton,
+              selected === "all" ? styles.selecteedText : null,
+            ]}
+          >
+            All
+          </Text>
         </Pressable>
-        <Pressable style={styles.contentButton}>
-          <Text style={styles.textButton}>Following</Text>
+        <Pressable
+          onPress={() => setSelected("media")}
+          style={[
+            styles.contentButton,
+            selected === "media" ? styles.selectedButton : null,
+          ]}
+        >
+          <Text
+            style={[
+              styles.textButton,
+              selected === "media" ? styles.selecteedText : null,
+            ]}
+          >
+            Media
+          </Text>
         </Pressable>
       </View>
     </View>
@@ -64,7 +105,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#c3c3c3",
     height: 150,
     position: "relative",
-    // marginBottom: 60,
   },
   avatarImage: {
     height: 120,
@@ -76,6 +116,8 @@ const styles = StyleSheet.create({
     borderColor: "#FFF",
   },
   userContainer: { marginTop: 60, alignItems: "center" },
+  userName: { fontWeight: "600", fontSize: 20 },
+  biography: { marginTop: 11 },
 
   followContainer: {
     width: "100%",
@@ -93,14 +135,15 @@ const styles = StyleSheet.create({
     width: 100,
     height: 33,
     borderRadius: 17,
-    backgroundColor: "#555555",
     justifyContent: "center",
     alignItems: "center",
   },
   textButton: {
-    color: "white",
+    color: "#027546",
     fontWeight: "600",
   },
+  selectedButton: { backgroundColor: "#027546" },
+  selecteedText: { color: "white" },
 });
 
 export default ProfileHeader;
