@@ -7,7 +7,6 @@ import {
   Image,
   Pressable,
 } from "react-native";
-import { COLORS } from "src/styles";
 
 interface ProfileHeaderProps {
   avatarImage: ImageSourcePropType;
@@ -140,17 +139,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   textButton: {
-<<<<<<< HEAD
-    color: COLORS.strong_green,
-    fontWeight: "600",
-  },
-  selectedButton: { backgroundColor: COLORS.strong_green },
-=======
     color: "#027546",
     fontWeight: "600",
   },
   selectedButton: { backgroundColor: "#027546" },
->>>>>>> toTypescript
   selecteedText: { color: "white" },
 });
 

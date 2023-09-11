@@ -5,10 +5,18 @@ import { StyleSheet, GestureResponderEvent, View } from "react-native";
 interface Props {
   title: string;
   onPress: (event: GestureResponderEvent) => void;
+  loading?: boolean;
 }
 
-const CustomButton = ({ title, onPress }: Props) => {
-  return <Button title={title} onPress={onPress} />;
+const CustomButton = ({ title, onPress, loading = false }: Props) => {
+  return (
+    <Button
+      title={title}
+      onPress={onPress}
+      loading={loading}
+      uppercase={false}
+    />
+  );
 };
 
 const styles = StyleSheet.create({

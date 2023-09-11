@@ -16,11 +16,6 @@
     "@react-navigation/native-stack": "^6.9.13",
     "@rneui/base": "^4.0.0-rc.8",
     "@rneui/themed": "^4.0.0-rc.8",
-    "@types/react": "^18.2.21",
-<<<<<<< HEAD
-=======
-    "@types/react-dom": "^18.2.7",
->>>>>>> toTypescript
     "expo": "^49.0.9",
     "expo-status-bar": "~1.6.0",
     "prop-types": "^15.8.1",

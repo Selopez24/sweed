@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Input } from "@rneui/themed";
@@ -11,16 +11,57 @@ import { AuthStackParams } from "src/navigators/AuthNavigator";
 import Google from "../../assets/icons/google.svg";
 import Facebook from "../../assets/icons/facebook.svg";
 import Twitter from "../../assets/icons/twitter.svg";
+import { signup } from "src/api";
 
 type Props = NativeStackScreenProps<AuthStackParams, "SignUp">;
 
 export default function SignUp({ navigation }: Props) {
- 
+  const [formData, setFormData] = useState({
+    username: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
+  const [isPasswordVisible, setIsPasswordVisible] = useState(true);
+  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
+    useState(true);
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleChange = (key: string, value: string) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [key]: value,
+    }));
+  };
+
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setIsConfirmPasswordVisible(!isConfirmPasswordVisible);
+  };
+
   const handleSocial = () => {
     return null;
   };
-  const handleSignUp = () => {
-    navigation.navigate("SignUp");
+  const handleSignUp = async () => {
+    if (formData.password !== confirmPassword) {
+      console.error("Passwords do not match!");
+      return;
+    }
+    setIsLoading(true);
+    try {
+      const response = await signup(formData);
+      console.log(response);
+      setIsLoading(false);
+      navigation.navigate("Login");
+    } catch (error: any) {
+      console.error("Error:", error.message);
+      setIsLoading(false);
+    }
   };
   const handleLogin = () => {
     navigation.navigate("Login");
@@ -31,28 +72,71 @@ export default function SignUp({ navigation }: Props) {
       <View style={styles.container}>
         <Logo style={styles.logo} />
 
-        <Input errorMessage="" placeholder="Create your username" />
-        <Input errorMessage="" placeholder="Your first name" />
-        <Input errorMessage="" placeholder="Your last name" />
-        <Input errorMessage="" placeholder="Your email" />
+        <Input
+          errorMessage=""
+          placeholder="Create your username"
+          onChangeText={(text) => handleChange("username", text)}
+          value={formData.username}
+        />
+        <Input
+          errorMessage=""
+          placeholder="Your first name"
+          onChangeText={(text) => handleChange("firstName", text)}
+          value={formData.firstName}
+        />
+        <Input
+          errorMessage=""
+          placeholder="Your last name"
+          onChangeText={(text) => handleChange("lastName", text)}
+          value={formData.lastName}
+        />
+        <Input
+          errorMessage=""
+          placeholder="Your email"
+          keyboardType="email-address"
+          onChangeText={(text) => handleChange("email", text)}
+          value={formData.email}
+        />
         <Input
           placeholder="Create your password"
           textContentType="password"
-          secureTextEntry={true}
-          rightIcon={<Icon name="eye-off-outline" size={20} />}
+          secureTextEntry={isPasswordVisible}
+          rightIcon={
+            <Icon
+              name={isPasswordVisible ? "eye-off-outline" : "eye-outline"}
+              size={20}
+              onPress={togglePasswordVisibility}
+            />
+          }
+          onChangeText={(text) => handleChange("password", text)}
+          value={formData.password}
         />
         <Input
           errorMessage=""
           placeholder="Confirm password"
           textContentType="password"
-          secureTextEntry={true}
-          rightIcon={<Icon name="eye-off-outline" size={20} />}
+          secureTextEntry={isConfirmPasswordVisible}
+          rightIcon={
+            <Icon
+              name={
+                isConfirmPasswordVisible ? "eye-off-outline" : "eye-outline"
+              }
+              size={20}
+              onPress={toggleConfirmPasswordVisibility}
+            />
+          }
+          onChangeText={setConfirmPassword}
+          value={confirmPassword}
         />
         <Text style={styles.privacyText}>
           By selecting ‘Sing up’ you agree our terms and statements of privacy.
           Read them <Text style={styles.boldText}>here</Text>
         </Text>
-        <CustomButton title="Sign Up" onPress={handleSignUp} />
+        <CustomButton
+          title="Sign Up"
+          onPress={handleSignUp}
+          loading={isLoading}
+        />
 
         <View style={{ flexDirection: "row" }}>
           <Text style={styles.or}>___________________</Text>
