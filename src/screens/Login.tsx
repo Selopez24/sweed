@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import Logo from "../../assets/logo.svg";
 import CustomButton from "../components/core/Button/Button";
@@ -11,14 +11,45 @@ import { navigate } from "src/helpers/RootNavigation";
 import Google from "../../assets/icons/google.svg";
 import Facebook from "../../assets/icons/facebook.svg";
 import Twitter from "../../assets/icons/twitter.svg";
+import { login } from "src/api";
 
 type Props = NativeStackScreenProps<AuthStackParams, "Login">;
 
 export default function Login({ navigation }: Props) {
-  const handleSocial = () => {};
-  const handleLogin = () => {
-    navigate("HomeNavigator", { screen: "Home" });
+  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [isPasswordVisible, setIsPasswordVisible] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
   };
+
+  const handleChange = (key: string, value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      [key]: value,
+    }));
+  };
+
+  const handleSocial = () => {};
+
+  const handleLogin = async () => {
+    setIsLoading(true);
+    try {
+      const response = await login(formData);
+      setIsLoading(false);
+
+      if (response && response.statusCode === 401) {
+        console.error("Login failed:", response.message);
+      } else {
+        navigate("HomeNavigator", { screen: "Home" });
+      }
+    } catch (error: any) {
+      console.error("Error:", error.message);
+      setIsLoading(false);
+    }
+  };
+
   const toSignUp = () => {
     navigation.navigate("SignUp");
   };
@@ -29,15 +60,24 @@ export default function Login({ navigation }: Props) {
         <Logo style={styles.logo} />
         <View style={styles.formContainer}>
           <Input
-            errorMessage="Please enter a valid username"
             placeholder="Write your username"
+            onChangeText={(text) => handleChange("username", text)}
+            value={formData.username}
           />
 
           <Input
             placeholder="Introduce your password"
             textContentType="password"
-            secureTextEntry={true}
-            rightIcon={<Icon name="eye-off-outline" size={20} />}
+            secureTextEntry={isPasswordVisible}
+            rightIcon={
+              <Icon
+                name="eye-off-outline"
+                size={20}
+                onPress={togglePasswordVisibility}
+              />
+            }
+            onChangeText={(text) => handleChange("password", text)}
+            value={formData.password}
           />
 
           <Text style={[styles.boldText, styles.forgotText]}>

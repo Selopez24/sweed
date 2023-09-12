@@ -11,8 +11,3 @@ export const IconButton = ({ icon, onPress }: Props) => {
   return <Button onPress={onPress} type="clear" icon={icon} />;
 };
 
-const styles = StyleSheet.create({
-  button: {
-    backgroundColor: "transparent",
-  },
-});

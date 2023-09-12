@@ -3,8 +3,8 @@ import { View, ImageSourcePropType, Image, StyleSheet } from "react-native";
 
 interface ImageProps {
   postImage: ImageSourcePropType;
-  containerStyle: {};
-  imageStyle: {};
+  containerStyle?: {};
+  imageStyle?: {};
 }
 
 const PostImages = ({ imageStyle, postImage, containerStyle }: ImageProps) => {

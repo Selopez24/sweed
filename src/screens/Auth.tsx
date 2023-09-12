@@ -21,7 +21,7 @@ export default function Auth({ navigation }: Props) {
         <Logo />
       </View>
 
-      <CustomButton title="LOG IN" onPress={handleLogin} />
+      <CustomButton title="Log in" onPress={handleLogin} />
       <View style={{ flexDirection: "row" }}>
         <Text style={styles.or}>___________________</Text>
         <Text style={styles.or}>Or</Text>

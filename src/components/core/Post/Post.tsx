@@ -62,7 +62,7 @@ const Post = ({
           <View style={styles.imageContainers}>
             {postImage.map((image, i) => (
               <PostImages
-                style={[
+                imageStyle={[
                   styles.postImages,
                   {
                     top: -0,
