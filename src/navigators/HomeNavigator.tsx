@@ -10,7 +10,7 @@ export type HomeStackParams = {
 
 const Stack = createNativeStackNavigator<HomeStackParams>();
 
-const HomeNavigator = () => {
+export const HomeNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{ headerBackVisible: false }}>
       <Stack.Screen name="Home" component={Home} />
@@ -18,5 +18,3 @@ const HomeNavigator = () => {
     </Stack.Navigator>
   );
 };
-
-export default HomeNavigator;

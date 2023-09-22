@@ -47,7 +47,7 @@ const ProfileHeader = ({ avatarImage }: ProfileHeaderProps) => {
           <Text
             style={[
               styles.textButton,
-              selected === "diaries" ? styles.selecteedText : null,
+              selected === "diaries" ? styles.selectedText : null,
             ]}
           >
             Diaries
@@ -63,7 +63,7 @@ const ProfileHeader = ({ avatarImage }: ProfileHeaderProps) => {
           <Text
             style={[
               styles.textButton,
-              selected === "all" ? styles.selecteedText : null,
+              selected === "all" ? styles.selectedText : null,
             ]}
           >
             All
@@ -79,7 +79,7 @@ const ProfileHeader = ({ avatarImage }: ProfileHeaderProps) => {
           <Text
             style={[
               styles.textButton,
-              selected === "media" ? styles.selecteedText : null,
+              selected === "media" ? styles.selectedText : null,
             ]}
           >
             Media
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   selectedButton: { backgroundColor: "#027546" },
-  selecteedText: { color: "white" },
+  selectedText: { color: "white" },
 });
 
 export default ProfileHeader;

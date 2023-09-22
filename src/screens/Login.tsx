@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
-import Logo from "../../assets/logo.svg";
-import CustomButton from "../components/core/Button/Button";
 import { Input } from "@rneui/themed";
-import Icon from "react-native-vector-icons/Ionicons";
-import { IconButton } from "../components/core/Icons/IconButton";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { AuthStackParams } from "src/navigators/AuthNavigator";
+import Icon from "react-native-vector-icons/Ionicons";
 import { navigate } from "src/helpers/RootNavigation";
-import Google from "../../assets/icons/google.svg";
-import Facebook from "../../assets/icons/facebook.svg";
-import Twitter from "../../assets/icons/twitter.svg";
 import { login } from "src/api";
+import { AuthStackParams } from "src/navigators";
+import Button from "src/components/core/Button";
+import IconButton from "src/components/core/Icons";
+import Logo from "assets/logo.svg";
+import Google from "assets/icons/google.svg";
+import Facebook from "assets/icons/facebook.svg";
+import Twitter from "assets/icons/twitter.svg";
 
 type Props = NativeStackScreenProps<AuthStackParams, "Login">;
 
@@ -37,6 +37,7 @@ export default function Login({ navigation }: Props) {
     setIsLoading(true);
     try {
       const response = await login(formData);
+
       setIsLoading(false);
 
       if (response && response.statusCode === 401) {
@@ -84,7 +85,7 @@ export default function Login({ navigation }: Props) {
             Forgot your password?
           </Text>
         </View>
-        <CustomButton title="Login" onPress={handleLogin} />
+        <Button title="Login" onPress={handleLogin} />
 
         <View style={{ flexDirection: "row" }}>
           <Text style={styles.or}>___________________</Text>

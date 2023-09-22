@@ -1,10 +1,11 @@
 import React from "react";
 import { ImageSourcePropType, ScrollView, StyleSheet } from "react-native";
-import Post from "../components/core/Post";
-import ProfileHeader from "../components/core/ProfileHeader";
-const ghost = require("../../assets/ghost.webp");
-const weedPost = require("../../assets/weed-post.jpg");
-const weed2 = require("../../assets/weed2.jpg");
+import Post from "components/core/Post";
+import ProfileHeader from "components/core/ProfileHeader";
+
+import ghost from "assets/ghost.webp";
+import weedPost from "assets/weed-post.jpg";
+import weed2 from "assets/weed2.jpg";
 
 interface PostProps {
   avatarImage?: ImageSourcePropType;

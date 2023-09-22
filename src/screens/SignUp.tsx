@@ -4,14 +4,14 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Input } from "@rneui/themed";
 import Icon from "react-native-vector-icons/Ionicons";
 
-import Logo from "../../assets/logo.svg";
-import CustomButton from "../components/core/Button/Button";
-import { IconButton } from "../components/core/Icons/IconButton";
-import { AuthStackParams } from "src/navigators/AuthNavigator";
-import Google from "../../assets/icons/google.svg";
-import Facebook from "../../assets/icons/facebook.svg";
-import Twitter from "../../assets/icons/twitter.svg";
+import Logo from "assets/logo.svg";
+import Google from "assets/icons/google.svg";
+import Facebook from "assets/icons/facebook.svg";
+import Twitter from "assets/icons/twitter.svg";
 import { signup } from "src/api";
+import { AuthStackParams } from "src/navigators";
+import Button from "src/components/core/Button";
+import IconButton from "src/components/core/Icons";
 
 type Props = NativeStackScreenProps<AuthStackParams, "SignUp">;
 
@@ -44,7 +44,6 @@ export default function SignUp({ navigation }: Props) {
     setIsConfirmPasswordVisible(!isConfirmPasswordVisible);
   };
 
-
   const handleSocial = () => {
     return null;
   };
@@ -56,7 +55,6 @@ export default function SignUp({ navigation }: Props) {
     setIsLoading(true);
     try {
       const response = await signup(formData);
-      console.log(response);
       setIsLoading(false);
       navigation.navigate("Login");
     } catch (error: any) {
@@ -133,11 +131,7 @@ export default function SignUp({ navigation }: Props) {
           By selecting ‘Sing up’ you agree our terms and statements of privacy.
           Read them <Text style={styles.boldText}>here</Text>
         </Text>
-        <CustomButton
-          title="Sign Up"
-          onPress={handleSignUp}
-          loading={isLoading}
-        />
+        <Button title="Sign Up" onPress={handleSignUp} loading={isLoading} />
 
         <View style={{ flexDirection: "row" }}>
           <Text style={styles.or}>___________________</Text>

@@ -1,9 +1,9 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import Logo from "../../assets/logo.svg";
-import CustomButton from "../components/core/Button/Button";
+import Logo from "assets/logo.svg";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { AuthStackParams } from "src/navigators/AuthNavigator";
+import { AuthStackParams } from "src/navigators";
+import Button from "src/components/core/Button";
 
 type Props = NativeStackScreenProps<AuthStackParams, "Auth">;
 
@@ -21,14 +21,14 @@ export default function Auth({ navigation }: Props) {
         <Logo />
       </View>
 
-      <CustomButton title="Log in" onPress={handleLogin} />
+      <Button title="Log in" onPress={handleLogin} />
       <View style={{ flexDirection: "row" }}>
         <Text style={styles.or}>___________________</Text>
         <Text style={styles.or}>Or</Text>
         <Text style={styles.or}>___________________</Text>
       </View>
 
-      <CustomButton title="Sign Up" onPress={handleSignUp} />
+      <Button title="Sign Up" onPress={handleSignUp} />
     </View>
   );
 }

@@ -10,8 +10,8 @@ import {
   View,
 } from "react-native";
 import Icon from "react-native-vector-icons/Entypo";
-import PostImages from "../PostImages/PostImages";
-import { HomeStackParams } from "../../../navigators/HomeNavigator";
+import { PostImages } from "../PostImages";
+import { HomeStackParams } from "src/navigators";
 
 interface PostProps {
   avatarImage: ImageSourcePropType;
@@ -24,16 +24,7 @@ interface PostProps {
   share?: number;
 }
 
-const Post = ({
-  avatarImage,
-  username,
-  sweet,
-  date,
-  postImage,
-  favorites,
-  comments,
-  share,
-}: PostProps) => {
+const Post = ({ avatarImage, username, sweet, postImage }: PostProps) => {
   const navigation =
     useNavigation<NativeStackNavigationProp<HomeStackParams>>();
 

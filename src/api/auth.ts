@@ -2,7 +2,6 @@ import { baseLocalUrl } from "./server";
 import { UserSignUp } from "src/types";
 
 export const signup = async (data: UserSignUp) => {
-  console.log({ data });
   try {
     const response = await fetch(`${baseLocalUrl}/users`, {
       method: "POST",
@@ -36,7 +35,6 @@ export const login = async (data: { username: string; password: string }) => {
       body: JSON.stringify(data),
     });
     const responseData = await response.json();
-    console.log(responseData);
     if (!response.ok) {
       throw new Error(responseData.message || "Something went wrong!");
     }

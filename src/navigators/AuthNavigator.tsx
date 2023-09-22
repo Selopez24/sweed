@@ -10,14 +10,15 @@ export type AuthStackParams = {
 
 const AuthStack = createNativeStackNavigator<AuthStackParams>();
 
-const AuthNavigator = () => {
+export const AuthNavigator = () => {
   return (
-    <AuthStack.Navigator screenOptions={{ headerShown: false }}>
+    <AuthStack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="Auth"
+    >
       <AuthStack.Screen name="Auth" component={Auth} />
       <AuthStack.Screen name="SignUp" component={SignUp} />
       <AuthStack.Screen name="Login" component={Login} />
     </AuthStack.Navigator>
   );
 };
-
-export default AuthNavigator;

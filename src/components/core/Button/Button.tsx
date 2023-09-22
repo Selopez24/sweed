@@ -1,6 +1,6 @@
-import { Button } from "@rneui/themed";
 import React from "react";
-import { StyleSheet, GestureResponderEvent, View } from "react-native";
+import { Button as RnButton } from "@rneui/themed";
+import { StyleSheet, GestureResponderEvent } from "react-native";
 
 interface Props {
   title: string;
@@ -8,9 +8,9 @@ interface Props {
   loading?: boolean;
 }
 
-const CustomButton = ({ title, onPress, loading = false }: Props) => {
+const Button = ({ title, onPress, loading = false }: Props) => {
   return (
-    <Button
+    <RnButton
       title={title}
       onPress={onPress}
       loading={loading}
@@ -25,4 +25,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CustomButton;
+export default Button;
