@@ -6,8 +6,8 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { navigate } from "src/helpers/RootNavigation";
 import { login } from "src/api";
 import { AuthStackParams } from "src/navigators";
-import Button from "src/components/core/Button";
-import IconButton from "src/components/core/Icons";
+import Button from "components/core/Button";
+import IconButton from "components/core/Icons";
 import Logo from "assets/logo.svg";
 import Google from "assets/icons/google.svg";
 import Facebook from "assets/icons/facebook.svg";
@@ -31,7 +31,7 @@ export default function Login({ navigation }: Props) {
     }));
   };
 
-  const handleSocial = () => {};
+  const handleSocial = () => { };
 
   const handleLogin = async () => {
     setIsLoading(true);

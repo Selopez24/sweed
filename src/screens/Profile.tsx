@@ -18,7 +18,7 @@ interface PostProps {
   share?: number;
 }
 
-const Profile = ({}) => {
+const Profile = ({ }) => {
   return (
     <>
       <ScrollView style={styles.homeContainer}>
