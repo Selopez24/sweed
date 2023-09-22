@@ -7,3 +7,7 @@ declare module "*.svg" {
 
 declare module "*.webp";
 declare module "*.jpg";
+declare module "config" {
+  const config: { baseUrl: string }
+  export default config
+}
