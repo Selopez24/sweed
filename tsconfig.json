@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "jsx": "react",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "baseUrl": "./",
+    "paths": {
+      "src/*": ["src/*"],
+      "components/*": ["src/components/*"],
+      "assets/*": ["assets/*"]
+    },
+    "types": ["react", "react-native", "node"]
+  },
+  "include": ["src/**/*", "declarations.d.ts"],
+
+  "extends": "expo/tsconfig.base"
+}
