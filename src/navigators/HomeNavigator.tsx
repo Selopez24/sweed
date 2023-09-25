@@ -1,7 +1,7 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Home from "../screens/Home";
-import Profile from "../screens/Profile";
+import Home from "src/screens/Home";
+import Profile from "src/screens/Profile";
 
 export type HomeStackParams = {
   Profile: any;
