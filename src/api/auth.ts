@@ -1,7 +1,7 @@
 import { UserSignUp } from "src/types";
 import http from "src/http/axios/axios";
 
-export const signup = async (data: UserSignUp) => {
+export const signUp = async (data: UserSignUp) => {
   try {
     const { data: responseData } = await http.post('/users', data)
     return responseData;

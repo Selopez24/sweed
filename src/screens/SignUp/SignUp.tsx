@@ -3,15 +3,15 @@ import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Input } from "@rneui/themed";
 import Icon from "react-native-vector-icons/Ionicons";
-
 import Logo from "assets/logo.svg";
 import Google from "assets/icons/google.svg";
 import Facebook from "assets/icons/facebook.svg";
 import Twitter from "assets/icons/twitter.svg";
-import { signup } from "src/api";
+import { signUp } from "src/api/auth";
 import { AuthStackParams } from "src/navigators";
 import Button from "src/components/core/Button";
 import IconButton from "src/components/core/Icons";
+import { useMutation } from "@tanstack/react-query";
 
 type Props = NativeStackScreenProps<AuthStackParams, "SignUp">;
 
@@ -27,7 +27,13 @@ export default function SignUp({ navigation }: Props) {
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
     useState(true);
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+
+
+  const userSignUpMutation = useMutation({
+    mutationFn: signUp, onSuccess: () => {
+      navigation.navigate("Login");
+    }
+  })
 
   const handleChange = (key: string, value: string) => {
     setFormData((prevState) => ({
@@ -52,14 +58,10 @@ export default function SignUp({ navigation }: Props) {
       console.error("Passwords do not match!");
       return;
     }
-    setIsLoading(true);
     try {
-      const response = await signup(formData);
-      setIsLoading(false);
-      navigation.navigate("Login");
+      userSignUpMutation.mutate(formData);
     } catch (error: any) {
       console.error("Error:", error.message);
-      setIsLoading(false);
     }
   };
   const handleLogin = () => {
@@ -131,7 +133,7 @@ export default function SignUp({ navigation }: Props) {
           By selecting ‘Sing up’ you agree our terms and statements of privacy.
           Read them <Text style={styles.boldText}>here</Text>
         </Text>
-        <Button title="Sign Up" onPress={handleSignUp} loading={isLoading} />
+        <Button title="Sign Up" onPress={handleSignUp} loading={userSignUpMutation.isLoading} />
 
         <View style={{ flexDirection: "row" }}>
           <Text style={styles.or}>___________________</Text>

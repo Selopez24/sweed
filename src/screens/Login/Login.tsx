@@ -4,7 +4,7 @@ import { Input } from "@rneui/themed";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import Icon from "react-native-vector-icons/Ionicons";
 import { navigate } from "src/helpers/RootNavigation";
-import { login } from "src/api";
+import { login } from "src/api/auth";
 import { AuthStackParams } from "src/navigators";
 import Button from "components/core/Button";
 import IconButton from "components/core/Icons";
@@ -12,13 +12,27 @@ import Logo from "assets/logo.svg";
 import Google from "assets/icons/google.svg";
 import Facebook from "assets/icons/facebook.svg";
 import Twitter from "assets/icons/twitter.svg";
+import { useMutation } from "@tanstack/react-query";
+import { User } from "src/types";
+import useUserStore from "src/stores/user/useUserStore";
 
 type Props = NativeStackScreenProps<AuthStackParams, "Login">;
 
 export default function Login({ navigation }: Props) {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [isPasswordVisible, setIsPasswordVisible] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
+  const setUserState = useUserStore(state => state.setUser)
+
+  const loginMutation = useMutation({
+    mutationFn: login,
+    onSuccess: (data: User) => {
+      setUserState(data)
+      navigate("HomeNavigator", { screen: "Home" });
+    },
+    onError: (error: any) => {
+      console.error(error.response?.data.message)
+    }
+  })
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
@@ -33,25 +47,11 @@ export default function Login({ navigation }: Props) {
 
   const handleSocial = () => { };
 
-  const handleLogin = async () => {
-    setIsLoading(true);
-    try {
-      const response = await login(formData);
-
-      setIsLoading(false);
-
-      if (response && response.statusCode === 401) {
-        console.error("Login failed:", response.message);
-      } else {
-        navigate("HomeNavigator", { screen: "Home" });
-      }
-    } catch (error: any) {
-      console.error("Error:", error.message);
-      setIsLoading(false);
-    }
+  const handleLogin = () => {
+    loginMutation.mutate(formData);
   };
 
-  const toSignUp = () => {
+  const goToSignUp = () => {
     navigation.navigate("SignUp");
   };
 
@@ -100,7 +100,7 @@ export default function Login({ navigation }: Props) {
         </View>
         <Text>
           Not registered?
-          <Text style={styles.boldText} onPress={toSignUp}>
+          <Text style={styles.boldText} onPress={goToSignUp}>
             Sign up
           </Text>
         </Text>
