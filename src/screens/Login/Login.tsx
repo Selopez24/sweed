@@ -13,8 +13,10 @@ import Google from "assets/icons/google.svg";
 import Facebook from "assets/icons/facebook.svg";
 import Twitter from "assets/icons/twitter.svg";
 import { useMutation } from "@tanstack/react-query";
-import { User } from "src/types";
+import { User } from "src/types/user";
 import useUserStore from "src/stores/user/useUserStore";
+import * as SecureStore from 'expo-secure-store';
+import { ACCESS_TOKEN } from "src/constants/secureStore";
 
 type Props = NativeStackScreenProps<AuthStackParams, "Login">;
 
@@ -23,9 +25,13 @@ export default function Login({ navigation }: Props) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(true);
   const setUserState = useUserStore(state => state.setUser)
 
+
+
   const loginMutation = useMutation({
     mutationFn: login,
-    onSuccess: (data: User) => {
+    onSuccess: async (data: User) => {
+      await SecureStore.setItemAsync(ACCESS_TOKEN, data.access_token)
+
       setUserState(data)
       navigate("HomeNavigator", { screen: "Home" });
     },
