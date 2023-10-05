@@ -32,12 +32,10 @@ export default function Login({ navigation }: Props) {
     onSuccess: async (data: User) => {
       await SecureStore.setItemAsync(ACCESS_TOKEN, data.access_token)
 
-
       setUserState(data)
-      navigate("HomeNavigator");
+      navigate("HomeNavigator", { screen: "Home" });
     },
     onError: (error: any) => {
-
       console.error(error.response?.data.message)
     }
   })
