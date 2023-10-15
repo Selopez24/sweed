@@ -1,9 +1,9 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import Logo from "assets/logo.svg";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { AuthStackParams } from "src/navigators";
 import Button from "src/components/core/Button";
+import Logo from "src/assets/logo.svg";
+import { AuthStackParams } from "src/types/root";
 
 type Props = NativeStackScreenProps<AuthStackParams, "Auth">;
 
