@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Text, StyleSheet, ScrollView, Pressable } from "react-native";
 import { Input } from "@rneui/themed";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import Icon from "react-native-vector-icons/Ionicons";
-import { navigate } from "src/helpers/RootNavigation";
 import { login } from "src/api/auth";
-import { AuthStackParams } from "src/navigators";
 import Button from "components/core/Button";
 import IconButton from "components/core/Icons";
 import Logo from "assets/logo.svg";
@@ -15,32 +13,27 @@ import Twitter from "assets/icons/twitter.svg";
 import { useMutation } from "@tanstack/react-query";
 import { User } from "src/types/user";
 import useUserStore from "src/stores/user/useUserStore";
-import * as SecureStore from 'expo-secure-store';
+import * as SecureStore from "expo-secure-store";
 import { ACCESS_TOKEN } from "src/constants/secureStore";
+import { AuthStackParams } from "src/types/root";
 
 type Props = NativeStackScreenProps<AuthStackParams, "Login">;
 
 export default function Login({ navigation }: Props) {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [isPasswordVisible, setIsPasswordVisible] = useState(true);
-  const setUserState = useUserStore(state => state.setUser)
-
-
+  const setUserState = useUserStore((state) => state.setUser);
 
   const loginMutation = useMutation({
     mutationFn: login,
     onSuccess: async (data: User) => {
-      await SecureStore.setItemAsync(ACCESS_TOKEN, data.access_token)
-
-
-      setUserState(data)
-      navigate("HomeNavigator");
+      await SecureStore.setItemAsync(ACCESS_TOKEN, data.access_token);
+      setUserState(data);
     },
     onError: (error: any) => {
-
-      console.error(error.response?.data.message)
-    }
-  })
+      console.error(error.response?.data.message);
+    },
+  });
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
@@ -53,7 +46,7 @@ export default function Login({ navigation }: Props) {
     }));
   };
 
-  const handleSocial = () => { };
+  const handleSocial = () => {};
 
   const handleLogin = () => {
     loginMutation.mutate(formData);
@@ -61,6 +54,10 @@ export default function Login({ navigation }: Props) {
 
   const goToSignUp = () => {
     navigation.navigate("SignUp");
+  };
+
+  const toResetPassword = () => {
+    navigation.navigate("ResetPassword");
   };
 
   return (
@@ -88,12 +85,17 @@ export default function Login({ navigation }: Props) {
             onChangeText={(text) => handleChange("password", text)}
             value={formData.password}
           />
-
-          <Text style={[styles.boldText, styles.forgotText]}>
-            Forgot your password?
-          </Text>
+          <Pressable onPress={toResetPassword}>
+            <Text style={[styles.boldText, styles.forgotText]}>
+              Forgot your password?
+            </Text>
+          </Pressable>
         </View>
-        <Button title="Login" onPress={handleLogin} />
+        <Button
+          title="Login"
+          onPress={handleLogin}
+          loading={loginMutation.isLoading}
+        />
 
         <View style={{ flexDirection: "row" }}>
           <Text style={styles.or}>___________________</Text>

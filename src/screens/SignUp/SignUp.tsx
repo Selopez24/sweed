@@ -8,10 +8,10 @@ import Google from "assets/icons/google.svg";
 import Facebook from "assets/icons/facebook.svg";
 import Twitter from "assets/icons/twitter.svg";
 import { signUp } from "src/api/auth";
-import { AuthStackParams } from "src/navigators";
 import Button from "src/components/core/Button";
 import IconButton from "src/components/core/Icons";
 import { useMutation } from "@tanstack/react-query";
+import { AuthStackParams } from "src/types/root";
 
 type Props = NativeStackScreenProps<AuthStackParams, "SignUp">;
 
@@ -28,12 +28,12 @@ export default function SignUp({ navigation }: Props) {
     useState(true);
   const [confirmPassword, setConfirmPassword] = useState("");
 
-
   const userSignUpMutation = useMutation({
-    mutationFn: signUp, onSuccess: () => {
+    mutationFn: signUp,
+    onSuccess: () => {
       navigation.navigate("Login");
-    }
-  })
+    },
+  });
 
   const handleChange = (key: string, value: string) => {
     setFormData((prevState) => ({
@@ -133,7 +133,11 @@ export default function SignUp({ navigation }: Props) {
           By selecting ‘Sing up’ you agree our terms and statements of privacy.
           Read them <Text style={styles.boldText}>here</Text>
         </Text>
-        <Button title="Sign Up" onPress={handleSignUp} loading={userSignUpMutation.isLoading} />
+        <Button
+          title="Sign Up"
+          onPress={handleSignUp}
+          loading={userSignUpMutation.isLoading}
+        />
 
         <View style={{ flexDirection: "row" }}>
           <Text style={styles.or}>___________________</Text>
