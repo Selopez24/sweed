@@ -18,14 +18,14 @@ const Stack = createNativeStackNavigator();
 
 const queryClient = new QueryClient();
 
+const prefix = Linking.createURL("/");
+
 export default function App() {
   const user = useUserStore((state) => state.user);
   const navigationRef = useRef<NavigationContainerRef<RootStackParams>>(null);
 
-  const url = Linking.useURL();
-
   const linking = {
-    prefixes: ["exp://192.168.1.12:8081", "sweed://"],
+    prefixes: [prefix],
     config: {
       screens: {
         Auth: "auth",
@@ -37,7 +37,7 @@ export default function App() {
     },
   };
 
-  console.log({ user });
+  console.log({ user, prefix });
 
   return (
     <QueryClientProvider client={queryClient}>
