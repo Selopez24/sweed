@@ -13,7 +13,7 @@ import { Input } from "@rneui/themed";
 import { confirmResetPassword } from "src/api/auth";
 import { AuthStackParams } from "src/types/root";
 
-type Props = NativeStackScreenProps<AuthStackParams, "NewPasswordScreen">;
+type Props = NativeStackScreenProps<AuthStackParams, "NewPassword">;
 
 export default function NewPasswordScreen({ route, navigation }: Props) {
   const { token } = route.params;
@@ -38,10 +38,7 @@ export default function NewPasswordScreen({ route, navigation }: Props) {
       const response = await confirmResetPassword(token, password);
       if (response.message) {
         setSuccessMessage(response.message);
-
-        setTimeout(() => {
-          navigation.navigate("Login");
-        }, 800);
+        navigation.navigate("Login");
       }
     } catch (error) {
       console.error("Error confirming reset password:", error);

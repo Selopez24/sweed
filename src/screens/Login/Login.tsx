@@ -56,7 +56,7 @@ export default function Login({ navigation }: Props) {
     navigation.navigate("SignUp");
   };
 
-  const toResetPassword = () => {
+  const goToResetPassword = () => {
     navigation.navigate("ResetPassword");
   };
 
@@ -85,7 +85,7 @@ export default function Login({ navigation }: Props) {
             onChangeText={(text) => handleChange("password", text)}
             value={formData.password}
           />
-          <Pressable onPress={toResetPassword}>
+          <Pressable onPress={goToResetPassword}>
             <Text style={[styles.boldText, styles.forgotText]}>
               Forgot your password?
             </Text>

@@ -38,9 +38,12 @@ export default function App() {
     },
   };
 
+<<<<<<< HEAD
 
   console.log({ user, prefix });
 
+=======
+>>>>>>> 1212564 (comments updated, post action deleted from this branch, log deleted)
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
