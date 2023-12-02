@@ -9,25 +9,12 @@
     "skipLibCheck": true,
     "baseUrl": "src",
     "paths": {
-      "src/*": [
-        "./*"
-      ],
-      "components/*": [
-        "components/*"
-      ],
-      "assets/*": [
-        "assets/*"
-      ]
+      "src/*": ["./*"],
+      "components/*": ["components/*"],
+      "assets/*": ["assets/*"]
     },
-    "types": [
-      "react",
-      "react-native",
-      "node"
-    ]
+    "types": ["react", "react-native", "node"]
   },
-  "include": [
-    "src/**/*",
-    "declarations.d.ts"
-  ],
+  "include": ["src/**/*", "declarations.d.ts"],
   "extends": "expo/tsconfig.base"
 }

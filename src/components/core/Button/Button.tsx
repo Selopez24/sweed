@@ -1,15 +1,29 @@
 import React from "react";
 import { Button as RnButton } from "@rneui/themed";
-import { StyleSheet, GestureResponderEvent } from "react-native";
+import {
+  StyleSheet,
+  GestureResponderEvent,
+  StyleProp,
+  ViewStyle,
+} from "react-native";
 
 interface Props {
   title: string;
   onPress: (event: GestureResponderEvent) => void;
   loading?: boolean;
   type?: "solid" | "outline" | "clear";
+  style?: StyleProp<ViewStyle>;
+  fontSize?: number;
 }
 
-const Button = ({ title, onPress, loading = false, type = "solid" }: Props) => {
+const Button = ({
+  title,
+  onPress,
+  loading = false,
+  type = "solid",
+  style,
+  fontSize = 16,
+}: Props) => {
   return (
     <RnButton
       title={title}
@@ -17,6 +31,8 @@ const Button = ({ title, onPress, loading = false, type = "solid" }: Props) => {
       loading={loading}
       uppercase={false}
       type={type}
+      containerStyle={[{ width: "100%" }, style]}
+      titleStyle={{ fontSize }}
     />
   );
 };

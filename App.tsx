@@ -37,8 +37,6 @@ export default function App() {
     },
   };
 
-  console.log({ user, prefix });
-
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>

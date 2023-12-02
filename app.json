@@ -30,9 +30,7 @@
       "favicon": "./src/assets/favicon.png"
     },
     "extra": {
-      "eas": {
-        "projectId": "12310e24-6eda-4cae-ab6b-eb95bab008b5"
-      }
+      "eas": {}
     },
     "owner": "sweed"
   }
