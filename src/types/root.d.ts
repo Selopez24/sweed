@@ -1,5 +1,4 @@
 type RootStackParamList = {
-  AuthNavigator: undefined;
   HomeNavigator: undefined;
 };
 

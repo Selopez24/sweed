@@ -18,32 +18,31 @@ const Stack = createNativeStackNavigator();
 
 const queryClient = new QueryClient();
 
-const prefix = Linking.createURL('/')
+const prefix = Linking.createURL("/");
 
 export default function App() {
   const user = useUserStore((state) => state.user);
   const navigationRef = useRef<NavigationContainerRef<RootStackParams>>(null);
 
-
   const linking = {
     prefixes: [prefix],
     config: {
       screens: {
-        Auth: "auth",
-        SignUp: "sign-up",
+        Auth: "*",
         Login: "login",
-        ResetPasswordScreen: "ResetPassword",
-        NewPasswordScreen: "reset-password",
       },
     },
   };
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
   console.log({ user, prefix });
 
 =======
 >>>>>>> 1212564 (comments updated, post action deleted from this branch, log deleted)
+=======
+>>>>>>> bfb9834 (fix deeplinking)
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
