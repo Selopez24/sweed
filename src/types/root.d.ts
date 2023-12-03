@@ -1,5 +1,4 @@
 type RootStackParamList = {
-  AuthNavigator: undefined;
   HomeNavigator: undefined;
 };
 
@@ -8,7 +7,7 @@ type AuthStackParams = {
   SignUp: any;
   Login: any;
   ResetPassword: any;
-  NewPasswordScreen: {
+  NewPassword: {
     token: string;
   };
 };

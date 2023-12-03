@@ -18,28 +18,21 @@ const Stack = createNativeStackNavigator();
 
 const queryClient = new QueryClient();
 
-const prefix = Linking.createURL('/')
+const prefix = Linking.createURL("/");
 
 export default function App() {
   const user = useUserStore((state) => state.user);
   const navigationRef = useRef<NavigationContainerRef<RootStackParams>>(null);
 
-
   const linking = {
     prefixes: [prefix],
     config: {
       screens: {
-        Auth: "auth",
-        SignUp: "sign-up",
+        Auth: "*",
         Login: "login",
-        ResetPasswordScreen: "ResetPassword",
-        NewPasswordScreen: "reset-password",
       },
     },
   };
-
-
-  console.log({ user, prefix });
 
   return (
     <QueryClientProvider client={queryClient}>

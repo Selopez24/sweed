@@ -13,9 +13,9 @@ import { Input } from "@rneui/themed";
 import { confirmResetPassword } from "src/api/auth";
 import { AuthStackParams } from "src/types/root";
 
-type Props = NativeStackScreenProps<AuthStackParams, "NewPasswordScreen">;
+type Props = NativeStackScreenProps<AuthStackParams, "NewPassword">;
 
-export default function NewPasswordScreen({ route, navigation }: Props) {
+export default function NewPassword({ route, navigation }: Props) {
   const { token } = route.params;
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -72,10 +72,10 @@ export default function NewPasswordScreen({ route, navigation }: Props) {
             value={confirmPassword}
             secureTextEntry
           />
-          {error ? <Text style={styles.errorText}>{error}</Text> : null}
-          {successMessage ? (
+          {error ?? <Text style={styles.errorText}>{error}</Text>}
+          {successMessage ?? (
             <Text style={styles.successText}>¡{successMessage}!</Text>
-          ) : null}
+          )}
           <Button
             title="Confirm Password"
             onPress={handleSubmit}

@@ -1,3 +1,3 @@
 export { default as Auth } from "./Auth";
-export { default as NewPasswordScreen } from "./NewPasswordScreen";
-export { default as ResetPasswordScreen } from "./ResetPasswordScreen";
+export { default as NewPassword } from "./NewPassword";
+export { default as ResetPassword } from "./ResetPassword";

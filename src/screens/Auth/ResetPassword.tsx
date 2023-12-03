@@ -9,7 +9,7 @@ import { AuthStackParams } from "src/types/root";
 
 type Props = NativeStackScreenProps<AuthStackParams, "ResetPassword">;
 
-export default function ResetPassword({ navigation }: Props) {
+export default function ResetPassword({}: Props) {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
