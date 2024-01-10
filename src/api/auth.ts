@@ -1,4 +1,3 @@
-import config from "src/config";
 import http from "src/http/axios/axios";
 import { UserSignUpDTO } from "src/types/dto/UserSignUp.dto";
 
@@ -36,7 +35,7 @@ export const resetPassword = async (email: string) => {
 
 export const confirmResetPassword = async (
   token: string,
-  newPassword: string
+  newPassword: string,
 ) => {
   try {
     const response = await http.post("/auth/reset-confirm", {
