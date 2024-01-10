@@ -7,14 +7,12 @@ export type HomeStackParams = {
   Feed: any;
 };
 
-
-const Tab = createBottomTabNavigator()
+const Tab = createBottomTabNavigator();
 
 export const HomeNavigator = () => {
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }}>
       <Tab.Screen name="Feed" component={Feed} />
     </Tab.Navigator>
-
   );
 };
