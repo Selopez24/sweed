@@ -14,6 +14,8 @@ const http = axios.create({
 http.interceptors.request.use(async (axiosConfig) => {
   const accessToken = await SecureStore.getItemAsync(ACCESS_TOKEN)
 
+
+
   const authHeader = { 'Authorization': `Bearer ${accessToken}` }
   return { ...axiosConfig, headers: { ...axiosConfig.headers, ...authHeader } } as InternalAxiosRequestConfig
 })

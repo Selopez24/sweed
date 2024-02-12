@@ -7,8 +7,7 @@ import { AuthStackParams } from "src/types/root";
 
 const AuthStack = createNativeStackNavigator<AuthStackParams>();
 
-export const AuthNavigator = () => {
-  return (
+export const AuthNavigator = () => (
     <AuthStack.Group screenOptions={{ headerShown: false }}>
       <AuthStack.Screen name="Auth" component={Auth} />
       <AuthStack.Screen name="SignUp" component={SignUp} />
@@ -20,4 +19,3 @@ export const AuthNavigator = () => {
       />
     </AuthStack.Group>
   );
-};

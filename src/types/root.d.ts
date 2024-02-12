@@ -4,10 +4,10 @@ type RootStackParamList = {
 };
 
 type AuthStackParams = {
-  Auth: any;
-  SignUp: any;
-  Login: any;
-  ResetPassword: any;
+  Auth: undefined;
+  SignUp: undefined;
+  Login: undefined;
+  ResetPassword: undefined;
   NewPasswordScreen: {
     token: string;
   };

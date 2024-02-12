@@ -10,32 +10,28 @@ import { useQuery } from "@tanstack/react-query";
 import useUserStore from "src/stores/user/useUserStore";
 import { Post as PostType } from "src/types/post";
 
-
-const Profile = ({ }) => {
-
-  const userState = useUserStore(state => state.user)
+const Profile = () => {
+  const userState = useUserStore((state) => state.user);
 
   const { data: postData } = useQuery({
-    queryKey: ['profilePosts'],
-    queryFn: () => getUserPosts(userState?.id)
-  })
-
-
+    queryKey: ["profilePosts"],
+    queryFn: () => getUserPosts(userState?.id),
+  });
 
   return (
     <>
       <ScrollView style={styles.homeContainer}>
         <ProfileHeader avatarImage={ghost} />
-        {postData?.map(({ id, content, createDate, user }: PostType) => <Post
-          avatarImage={ghost}
-          username={user.username}
-          sweet={
-            content}
-          date={createDate}
-          postImage={[weed2, weedPost, weed2, weedPost]}
-          key={id}
-        />
-        )}
+        {postData?.map(({ id, content, createDate, user }: PostType) => (
+          <Post
+            avatarImage={ghost}
+            username={user.username}
+            sweet={content}
+            date={createDate}
+            postImage={[weed2, weedPost, weed2, weedPost]}
+            key={id}
+          />
+        ))}
       </ScrollView>
     </>
   );

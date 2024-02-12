@@ -1,19 +1,25 @@
 import React from "react";
-import { View, ImageSourcePropType, Image, StyleSheet } from "react-native";
+import {
+  View,
+  ImageSourcePropType,
+  Image,
+  StyleSheet,
+  StyleProp,
+  ImageStyle,
+  ViewStyle,
+} from "react-native";
 
 interface ImageProps {
   postImage: ImageSourcePropType;
-  containerStyle?: {};
-  imageStyle?: {};
+  containerStyle?: StyleProp<ViewStyle>;
+  imageStyle?: StyleProp<ImageStyle>;
 }
 
-const PostImages = ({ imageStyle, postImage, containerStyle }: ImageProps) => {
-  return (
-    <View style={{ ...styles.imageContainer, ...containerStyle }}>
-      <Image source={postImage} style={imageStyle} />
-    </View>
-  );
-};
+const PostImages = ({ imageStyle, postImage, containerStyle }: ImageProps) => (
+  <View style={[styles.imageContainer, containerStyle]}>
+    <Image source={postImage} style={imageStyle} />
+  </View>
+);
 
 const styles = StyleSheet.create({
   imageContainer: {

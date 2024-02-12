@@ -51,14 +51,4 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 100,
   },
-  or: {
-    marginHorizontal: 10,
-    marginVertical: 20,
-    color: "#767676",
-  },
-  forgotPassword: {
-    textDecorationLine: "underline",
-    alignSelf: "flex-start",
-    marginTop: 20,
-  },
 });
