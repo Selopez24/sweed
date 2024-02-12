@@ -8,7 +8,7 @@ type AuthStackParams = {
   SignUp: undefined;
   Login: undefined;
   ResetPassword: undefined;
-  NewPasswordScreen: {
+  NewPassword: {
     token: string;
   };
 };

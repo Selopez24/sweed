@@ -21,6 +21,8 @@ export const login = async (data: { username: string; password: string }) => {
   }
 };
 
+
+
 export const resetPassword = async (email: string) => {
   try {
     const resp = await http.post("/auth/reset-password", {
@@ -37,7 +39,7 @@ export const resetPassword = async (email: string) => {
 
 export const confirmResetPassword = async (
   token: string,
-  newPassword: string
+  newPassword: string,
 ) => {
   try {
     const response = await http.post("/auth/reset-confirm", {

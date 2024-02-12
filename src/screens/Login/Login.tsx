@@ -56,7 +56,7 @@ export default function Login({ navigation }: Props) {
     navigation.navigate("SignUp");
   };
 
-  const toResetPassword = () => {
+  const goToResetPassword = () => {
     navigation.navigate("ResetPassword");
   };
 
@@ -85,7 +85,7 @@ export default function Login({ navigation }: Props) {
             onChangeText={(text) => handleChange("password", text)}
             value={formData.password}
           />
-          <Pressable onPress={toResetPassword}>
+          <Pressable onPress={goToResetPassword}>
             <Text style={[styles.boldText, styles.forgotText]}>
               Forgot your password?
             </Text>
@@ -97,7 +97,7 @@ export default function Login({ navigation }: Props) {
           loading={loginMutation.isLoading}
         />
 
-        <View style={{ flexDirection: "row" }}>
+        <View style={styles.orContainer}>
           <Text style={styles.or}>___________________</Text>
           <Text style={styles.or}>Or</Text>
           <Text style={styles.or}>___________________</Text>
@@ -136,6 +136,7 @@ const styles = StyleSheet.create({
   logo: {
     marginBottom: 87,
   },
+  orContainer: { flexDirection: "row" },
   boldText: {
     textDecorationLine: "underline",
     color: "#000",

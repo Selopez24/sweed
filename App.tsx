@@ -28,15 +28,12 @@ export default function App() {
     prefixes: [prefix],
     config: {
       screens: {
-        Auth: "auth",
-        SignUp: "sign-up",
+        Auth: "*",
         Login: "login",
-        ResetPasswordScreen: "ResetPassword",
-        NewPasswordScreen: "reset-password",
       },
     },
   };
-
+ 
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
