@@ -11,8 +11,10 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
+  plugins: ["@typescript-eslint"],
   rules: {
     "no-console": ["error", { allow: ["warn", "error"] }],
+    "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
     "import/no-unresolved": "off",
     "import/no-namespace": "off",
     "no-use-before-define": "off",

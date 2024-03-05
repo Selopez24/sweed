@@ -1,4 +1,4 @@
-import { Image } from './image'
+import { ImageDTO } from './image'
 
 export type Post = {
   id: string;
@@ -6,7 +6,7 @@ export type Post = {
   createDate: Date;
   updateDate: Date;
   userId: string;
-  images: Image[];
+  images: ImageDTO[];
   user: {
     id: string;
     username: string;

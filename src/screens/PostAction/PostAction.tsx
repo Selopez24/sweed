@@ -10,6 +10,7 @@ import useUserStore from "src/stores/user/useUserStore";
 import { sendPost } from "src/api/post";
 import { NavigationProp, ParamListBase } from "@react-navigation/native";
 import { styles } from "./PostAction,styles";
+import { useQueryClient } from "@tanstack/react-query";
 
 type Props = {
   navigation: NavigationProp<ParamListBase>;
@@ -17,6 +18,7 @@ type Props = {
 
 export default function PostAction({ navigation }: Props) {
   const [post, setPost] = useState("");
+  const queryClient = useQueryClient();
   const [isLoading, setIsLoading] = useState(false);
   const [imageUris, setImageUris] = useState<string[]>([]);
 
@@ -25,7 +27,6 @@ export default function PostAction({ navigation }: Props) {
   const pickImage = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
       allowsMultipleSelection: true,
@@ -37,38 +38,40 @@ export default function PostAction({ navigation }: Props) {
   };
 
   const handlePosting = async () => {
-    if (!user || imageUris.length === 0) return;
+    if (!user) return;
 
     setIsLoading(true);
     const imagesData: { pathName: string; url: string }[] = [];
 
-    for (const imageUri of imageUris) {
-      const file = imageUri.split("/").pop();
-      const fileExtension = file?.split(".").pop();
-      const fileName = `${Date.now()}.${fileExtension}`;
-      const fileType = `image/${fileExtension}`;
+    if (imageUris.length > 0) {
+      for (const imageUri of imageUris) {
+        const file = imageUri.split("/").pop();
+        const fileExtension = file?.split(".").pop();
+        const fileName = `${Date.now()}.${fileExtension}`;
+        const fileType = `image/${fileExtension}`;
 
-      const formData = new FormData();
-      const imageToUpload = {
-        uri: imageUri,
-        name: fileName,
-        type: fileType,
-      } as unknown as Blob;
+        const formData = new FormData();
+        const imageToUpload = {
+          uri: imageUri,
+          name: fileName,
+          type: fileType,
+        } as unknown as Blob;
 
-      formData.append("file", imageToUpload);
+        formData.append("file", imageToUpload);
 
-      const uploadPath = `images/${user.id}/${fileName}`;
+        const uploadPath = `images/${user.id}/${fileName}`;
 
-      await supabase.storage.from("Images").upload(uploadPath, formData, {
-        contentType: fileType,
-        upsert: true,
-      });
+        await supabase.storage.from("Images").upload(uploadPath, formData, {
+          contentType: fileType,
+          upsert: true,
+        });
 
-      const { data } = await supabase.storage
-        .from("Images")
-        .getPublicUrl(uploadPath);
+        const { data } = await supabase.storage
+          .from("Images")
+          .getPublicUrl(uploadPath);
 
-      imagesData.push({ pathName: uploadPath, url: data.publicUrl });
+        imagesData.push({ pathName: uploadPath, url: data.publicUrl });
+      }
     }
 
     await sendPost({
@@ -79,6 +82,7 @@ export default function PostAction({ navigation }: Props) {
     setIsLoading(false);
     setPost("");
     setImageUris([]);
+    await queryClient.invalidateQueries({ queryKey: ["user-posts"] });
     navigation.navigate("Feed");
   };
 

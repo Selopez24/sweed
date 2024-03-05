@@ -46,8 +46,6 @@ export default function Login({ navigation }: Props) {
     }));
   };
 
-  const handleSocial = () => {};
-
   const handleLogin = () => {
     loginMutation.mutate(formData);
   };
@@ -104,9 +102,9 @@ export default function Login({ navigation }: Props) {
         </View>
         <Text style={styles.or}>Enter with your social media account</Text>
         <View style={styles.socialIcons}>
-          <IconButton icon={<Facebook />} onPress={handleSocial} />
-          <IconButton icon={<Twitter />} onPress={handleSocial} />
-          <IconButton icon={<Google />} onPress={handleSocial} />
+          <IconButton icon={<Facebook />} onPress={() => null} />
+          <IconButton icon={<Twitter />} onPress={() => null} />
+          <IconButton icon={<Google />} onPress={() => null} />
         </View>
         <Text>
           Not registered?

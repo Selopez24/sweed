@@ -1,23 +1,23 @@
 import React from "react";
 import {
   View,
-  ImageSourcePropType,
   Image,
   StyleSheet,
   StyleProp,
   ImageStyle,
   ViewStyle,
 } from "react-native";
+import { ImageDTO } from "src/types/image";
 
 interface ImageProps {
-  postImage: ImageSourcePropType;
+  postImage: ImageDTO;
   containerStyle?: StyleProp<ViewStyle>;
   imageStyle?: StyleProp<ImageStyle>;
 }
 
 const PostImages = ({ imageStyle, postImage, containerStyle }: ImageProps) => (
   <View style={[styles.imageContainer, containerStyle]}>
-    <Image source={postImage} style={imageStyle} />
+    <Image source={{ uri: postImage.url }} style={imageStyle} />
   </View>
 );
 

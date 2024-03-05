@@ -3,8 +3,6 @@ import { ScrollView, StyleSheet } from "react-native";
 import Post from "components/core/Post";
 import ProfileHeader from "components/core/ProfileHeader";
 import ghost from "assets/ghost.webp";
-import weedPost from "assets/weed-post.jpg";
-import weed2 from "assets/weed2.jpg";
 import { getUserPosts } from "src/api/user";
 import { useQuery } from "@tanstack/react-query";
 import useUserStore from "src/stores/user/useUserStore";
@@ -22,16 +20,18 @@ const Profile = () => {
     <>
       <ScrollView style={styles.homeContainer}>
         <ProfileHeader avatarImage={ghost} />
-        {postData?.map(({ id, content, createDate, user }: PostType) => (
-          <Post
-            avatarImage={ghost}
-            username={user.username}
-            sweet={content}
-            date={createDate}
-            postImage={[weed2, weedPost, weed2, weedPost]}
-            key={id}
-          />
-        ))}
+        {postData?.map(
+          ({ id, content, createDate, user, images }: PostType) => (
+            <Post
+              avatarImage={ghost}
+              username={user.username}
+              sweet={content}
+              date={createDate}
+              postImages={images}
+              key={id}
+            />
+          )
+        )}
       </ScrollView>
     </>
   );

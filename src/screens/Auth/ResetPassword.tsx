@@ -9,7 +9,7 @@ import { AuthStackParams } from "src/types/root";
 
 type Props = NativeStackScreenProps<AuthStackParams, "ResetPassword">;
 
-export default function ResetPassword({}: Props) {
+export default function ResetPassword({ navigation }: Props) {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -50,15 +50,5 @@ const styles = StyleSheet.create({
   logo: {
     position: "absolute",
     top: 100,
-  },
-  or: {
-    marginHorizontal: 10,
-    marginVertical: 20,
-    color: "#767676",
-  },
-  forgotPassword: {
-    textDecorationLine: "underline",
-    alignSelf: "flex-start",
-    marginTop: 20,
   },
 });

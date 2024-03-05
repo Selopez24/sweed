@@ -28,6 +28,7 @@ export const styles = StyleSheet.create({
     },
     username: { fontSize: 14, fontWeight: "700" },
     date: { fontWeight: "500", color: "#a9a9a9", marginLeft: 10 },
+    dotsContainer: { marginLeft: "auto" },
     icon: {
         fontSize: 18,
         textAlign: "center",
