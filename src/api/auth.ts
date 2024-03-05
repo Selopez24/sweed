@@ -6,6 +6,7 @@ export const signUp = async (data: UserSignUpDTO) => {
     const { data: responseData } = await http.post("/users", data);
     return responseData;
   } catch (error) {
+    console.error(error);
     throw error;
   }
 };
@@ -15,9 +16,12 @@ export const login = async (data: { username: string; password: string }) => {
     const { data: responseData } = await http.post("/auth/login", data);
     return responseData;
   } catch (error) {
+    console.error(error);
     throw error;
   }
 };
+
+
 
 export const resetPassword = async (email: string) => {
   try {

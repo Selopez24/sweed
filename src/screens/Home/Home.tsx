@@ -5,8 +5,7 @@ import ghost from "assets/ghost.webp";
 import weedPost from "assets/weed-post.jpg";
 import weed2 from "assets/weed2.jpg";
 
-const Home = () => {
-  return (
+const Home = () => (
     <ScrollView style={styles.homeContainer}>
       <Post
         avatarImage={ghost}
@@ -55,7 +54,6 @@ const Home = () => {
       />
     </ScrollView>
   );
-};
 
 const styles = StyleSheet.create({
   homeContainer: {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, ScrollView, Pressable } from "react-native";
 import { Input } from "@rneui/themed";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import Icon from "react-native-vector-icons/Ionicons";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { login } from "src/api/auth";
 import Button from "components/core/Button";
 import IconButton from "components/core/Icons";
@@ -46,8 +46,6 @@ export default function Login({ navigation }: Props) {
     }));
   };
 
-  const handleSocial = () => {};
-
   const handleLogin = () => {
     loginMutation.mutate(formData);
   };
@@ -76,7 +74,7 @@ export default function Login({ navigation }: Props) {
             textContentType="password"
             secureTextEntry={isPasswordVisible}
             rightIcon={
-              <Icon
+              <Ionicons
                 name="eye-off-outline"
                 size={20}
                 onPress={togglePasswordVisibility}
@@ -97,16 +95,16 @@ export default function Login({ navigation }: Props) {
           loading={loginMutation.isLoading}
         />
 
-        <View style={{ flexDirection: "row" }}>
+        <View style={styles.orContainer}>
           <Text style={styles.or}>___________________</Text>
           <Text style={styles.or}>Or</Text>
           <Text style={styles.or}>___________________</Text>
         </View>
         <Text style={styles.or}>Enter with your social media account</Text>
         <View style={styles.socialIcons}>
-          <IconButton icon={<Facebook />} onPress={handleSocial} />
-          <IconButton icon={<Twitter />} onPress={handleSocial} />
-          <IconButton icon={<Google />} onPress={handleSocial} />
+          <IconButton icon={<Facebook />} onPress={() => null} />
+          <IconButton icon={<Twitter />} onPress={() => null} />
+          <IconButton icon={<Google />} onPress={() => null} />
         </View>
         <Text>
           Not registered?
@@ -136,6 +134,7 @@ const styles = StyleSheet.create({
   logo: {
     marginBottom: 87,
   },
+  orContainer: { flexDirection: "row" },
   boldText: {
     textDecorationLine: "underline",
     color: "#000",
@@ -157,10 +156,5 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginVertical: 20,
     color: "#767676",
-  },
-  forgotPassword: {
-    textDecorationLine: "underline",
-    alignSelf: "flex-start",
-    marginTop: 20,
   },
 });

@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es2016",
-    "jsx": "react",
+    "jsx": "react-jsx",
     "module": "commonjs",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -9,25 +9,14 @@
     "skipLibCheck": true,
     "baseUrl": "src",
     "paths": {
-      "src/*": [
-        "./*"
-      ],
-      "components/*": [
-        "components/*"
-      ],
-      "assets/*": [
-        "assets/*"
-      ]
+      "src/*": ["./*"],
+      "components/*": ["components/*"],
+      "assets/*": ["assets/*"],
+      "react": ["./node_modules/@types/react"],
+      "@rneui/*": ["node_modules/@rneui/*"]
     },
-    "types": [
-      "react",
-      "react-native",
-      "node"
-    ]
+    "types": ["react", "react-native", "node"]
   },
-  "include": [
-    "src/**/*",
-    "declarations.d.ts"
-  ],
+  "include": ["src/**/*", "declarations.d.ts"],
   "extends": "expo/tsconfig.base"
 }

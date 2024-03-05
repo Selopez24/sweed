@@ -1,4 +1,4 @@
-export type Image = {
+export type ImageDTO = {
   id: string;
   url: string;
   createDate: Date;

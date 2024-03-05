@@ -30,7 +30,6 @@ export const theme = createTheme({
         justifyContent: "center",
         alignItems: "center",
         elevation: 5,
-        marginBottom: 22,
       },
       titleStyle: {
         color: "white",

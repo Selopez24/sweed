@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Input } from "@rneui/themed";
-import Icon from "react-native-vector-icons/Ionicons";
 import Logo from "assets/logo.svg";
 import Google from "assets/icons/google.svg";
 import Facebook from "assets/icons/facebook.svg";
@@ -12,6 +11,7 @@ import Button from "src/components/core/Button";
 import IconButton from "src/components/core/Icons";
 import { useMutation } from "@tanstack/react-query";
 import { AuthStackParams } from "src/types/root";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 type Props = NativeStackScreenProps<AuthStackParams, "SignUp">;
 
@@ -50,9 +50,7 @@ export default function SignUp({ navigation }: Props) {
     setIsConfirmPasswordVisible(!isConfirmPasswordVisible);
   };
 
-  const handleSocial = () => {
-    return null;
-  };
+  const handleSocial = () => null;
   const handleSignUp = async () => {
     if (formData.password !== confirmPassword) {
       console.error("Passwords do not match!");
@@ -103,7 +101,7 @@ export default function SignUp({ navigation }: Props) {
           textContentType="password"
           secureTextEntry={isPasswordVisible}
           rightIcon={
-            <Icon
+            <Ionicons
               name={isPasswordVisible ? "eye-off-outline" : "eye-outline"}
               size={20}
               onPress={togglePasswordVisibility}
@@ -118,7 +116,7 @@ export default function SignUp({ navigation }: Props) {
           textContentType="password"
           secureTextEntry={isConfirmPasswordVisible}
           rightIcon={
-            <Icon
+            <Ionicons
               name={
                 isConfirmPasswordVisible ? "eye-off-outline" : "eye-outline"
               }
@@ -182,7 +180,6 @@ const styles = StyleSheet.create({
     color: "#231F20",
     textDecorationLine: "underline",
   },
-  button: { width: "100%", marginBottom: 3 },
   socialIcons: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -190,18 +187,10 @@ const styles = StyleSheet.create({
     alignContent: "space-between",
     width: "60%",
   },
-  textSignUpButton: {
-    backgroundColor: "white",
-    fontWeight: "700",
-  },
+
   or: {
     marginHorizontal: 10,
     marginVertical: 20,
     color: "#767676",
-  },
-  forgotPassword: {
-    textDecorationLine: "underline",
-    alignSelf: "flex-start",
-    marginTop: 20,
   },
 });
