@@ -12,3 +12,14 @@ type AuthStackParams = {
   };
 };
 export type RootStackParams = RootStackParamList & AuthStackParams;
+
+
+export type DrawerStackParams = {
+  HomeTabs: HomeStackParams;
+  Profile: { userId?: string };
+  Settings: undefined;
+};
+
+export type HomeStackParams = {
+  Feed: undefined;
+};

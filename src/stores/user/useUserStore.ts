@@ -1,9 +1,9 @@
-import { User } from "src/types";
+import { User } from "src/types/user";
 import { create } from "zustand";
 
 interface UserState {
   user: User | null
-  setUser: (user: User) => void
+  setUser: (user: User | null) => void
 }
 
 const useUserStore = create<UserState>()((set) => ({

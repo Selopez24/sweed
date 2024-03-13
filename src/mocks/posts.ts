@@ -1,0 +1,161 @@
+import { Post } from "src/types/post";
+
+export const POSTS: Post[] = [
+    {
+        id: '1',
+        content: 'This is my first post!',
+        createDate: new Date('2023-03-01'),
+        updateDate: new Date('2023-03-01'),
+        userId: 'c86598ff-0e13-4781-b731-7cf72ef04747',
+        images: [
+            { url: 'https://example.com/image1.jpg', name: 'image1.jpg', id: '1' },
+            { url: 'https://example.com/image2.jpg', name: 'image2.jpg', id: '2' },
+        ],
+        user: {
+            id: 'c86598ff-0e13-4781-b731-7cf72ef04747',
+            username: 'sebastian',
+            firstName: 'Sebastian',
+            lastName: 'Lopez',
+        },
+    },
+    {
+        id: '2',
+        content: 'Just had a great workout!',
+        createDate: new Date('2023-03-02'),
+        updateDate: new Date('2023-03-02'),
+        userId: '9fdf8f26-d15a-4c7b-a98c-e09abfb93492',
+        images: [
+            { url: 'https://example.com/image3.jpg', name: 'image3.jpg', id: '3' },
+        ],
+        user: {
+            id: '9fdf8f26-d15a-4c7b-a98c-e09abfb93492',
+            username: 'felacho',
+            firstName: 'Felix',
+            lastName: 'testing',
+        },
+    },
+    {
+        id: '3',
+        content: 'Check out this amazing sunset!',
+        createDate: new Date('2023-03-03'),
+        updateDate: new Date('2023-03-03'),
+        userId: 'f680b0a4-4af0-4753-9821-c7f9f6cfef1f',
+        images: [
+            { url: 'https://example.com/image4.jpg', name: 'image4.jpg', id: '4' },
+            { url: 'https://example.com/image5.jpg', name: 'image5.jpg', id: '5' },
+            { url: 'https://example.com/image6.jpg', name: 'image6.jpg', id: '6' },
+        ],
+        user: {
+            id: 'f680b0a4-4af0-4753-9821-c7f9f6cfef1f',
+            username: 'feedmite',
+            firstName: 'Felix',
+            lastName: 'Miranda',
+        },
+    },
+    {
+        id: '4',
+        content: 'Check out this amazing sunset!',
+        createDate: new Date('2023-03-03'),
+        updateDate: new Date('2023-03-03'),
+        userId: 'fb925883-1f89-4c89-889f-0e19241431ef',
+        images: [
+            { url: 'https://example.com/image4.jpg', name: 'image4.jpg', id: '4' },
+            { url: 'https://example.com/image5.jpg', name: 'image5.jpg', id: '5' },
+            { url: 'https://example.com/image6.jpg', name: 'image6.jpg', id: '6' },
+        ],
+        user: {
+            id: 'fb925883-1f89-4c89-889f-0e19241431ef',
+            username: 'Sebiño',
+            firstName: 'sebas',
+            lastName: 'Lopez',
+        },
+    },
+    {
+        id: '5',
+        content: 'Check out this amazing sunset!',
+        createDate: new Date('2023-03-03'),
+        updateDate: new Date('2023-03-03'),
+        userId: '3',
+        images: [
+            { url: 'https://example.com/image4.jpg', name: 'image4.jpg', id: '4' },
+            { url: 'https://example.com/image5.jpg', name: 'image5.jpg', id: '5' },
+            { url: 'https://example.com/image6.jpg', name: 'image6.jpg', id: '6' },
+        ],
+        user: {
+            id: '3',
+            username: 'bobsmith',
+            firstName: 'Bob',
+            lastName: 'Smith',
+        },
+    },
+    {
+        id: '6',
+        content: 'Check out this amazing sunset!',
+        createDate: new Date('2023-03-03'),
+        updateDate: new Date('2023-03-03'),
+        userId: '3',
+        images: [
+            { url: 'https://example.com/image4.jpg', name: 'image4.jpg', id: '4' },
+            { url: 'https://example.com/image5.jpg', name: 'image5.jpg', id: '5' },
+            { url: 'https://example.com/image6.jpg', name: 'image6.jpg', id: '6' },
+        ],
+        user: {
+            id: '3',
+            username: 'bobsmith',
+            firstName: 'Bob',
+            lastName: 'Smith',
+        },
+    },
+    {
+        id: '7',
+        content: 'Check out this amazing sunset!',
+        createDate: new Date('2023-03-03'),
+        updateDate: new Date('2023-03-03'),
+        userId: '3',
+        images: [
+            { url: 'https://example.com/image4.jpg', name: 'image4.jpg', id: '4' },
+            { url: 'https://example.com/image5.jpg', name: 'image5.jpg', id: '5' },
+            { url: 'https://example.com/image6.jpg', name: 'image6.jpg', id: '6' },
+        ],
+        user: {
+            id: '3',
+            username: 'bobsmith',
+            firstName: 'Bob',
+            lastName: 'Smith',
+        },
+    },
+    {
+        id: '8',
+        content: 'Check out this amazing sunset!',
+        createDate: new Date('2023-03-03'),
+        updateDate: new Date('2023-03-03'),
+        userId: '3',
+        images: [
+            { url: 'https://example.com/image4.jpg', name: 'image4.jpg', id: '4' },
+            { url: 'https://example.com/image5.jpg', name: 'image5.jpg', id: '5' },
+            { url: 'https://example.com/image6.jpg', name: 'image6.jpg', id: '6' },
+        ],
+        user: {
+            id: '3',
+            username: 'bobsmith',
+            firstName: 'Bob',
+            lastName: 'Smith',
+        },
+    },
+    {
+        id: '20',
+        content: 'Just tried a new recipe, and it turned out great!',
+        createDate: new Date('2023-03-20'),
+        updateDate: new Date('2023-03-20'),
+        userId: '5',
+        images: [
+            { url: 'https://example.com/image20.jpg', name: 'image20.jpg', id: '20' },
+        ],
+        user: {
+            id: '5',
+            username: 'chefbob',
+            firstName: 'Bob',
+            lastName: 'Johnson',
+        },
+    },
+];

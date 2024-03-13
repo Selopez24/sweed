@@ -14,7 +14,11 @@ import { useMutation } from "@tanstack/react-query";
 import { User } from "src/types/user";
 import useUserStore from "src/stores/user/useUserStore";
 import * as SecureStore from "expo-secure-store";
-import { ACCESS_TOKEN } from "src/constants/secureStore";
+import {
+  ALREADY_LOGGED,
+  USER_DATA,
+  ACCESS_TOKEN,
+} from "src/constants/secureStore";
 import { AuthStackParams } from "src/types/root";
 
 type Props = NativeStackScreenProps<AuthStackParams, "Login">;
@@ -27,6 +31,8 @@ export default function Login({ navigation }: Props) {
   const loginMutation = useMutation({
     mutationFn: login,
     onSuccess: async (data: User) => {
+      await SecureStore.setItemAsync(USER_DATA, JSON.stringify(data));
+      await SecureStore.setItemAsync(ALREADY_LOGGED, "true");
       await SecureStore.setItemAsync(ACCESS_TOKEN, data.access_token);
       setUserState(data);
     },
@@ -94,7 +100,7 @@ export default function Login({ navigation }: Props) {
         <Button
           title="Login"
           onPress={handleLogin}
-          loading={loginMutation.isLoading}
+          loading={loginMutation.isPending}
         />
 
         <View style={{ flexDirection: "row" }}>

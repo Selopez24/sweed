@@ -1,4 +1,4 @@
-import { Image } from './image'
+import { Post_Image } from './image'
 
 export type Post = {
   id: string;
@@ -6,12 +6,15 @@ export type Post = {
   createDate: Date;
   updateDate: Date;
   userId: string;
-  images: Image[];
-  user: {
-    id: string;
-    username: string;
-    firstName: string;
-    lastName: string;
-  };
+  images: Post_Image[];
+  user: PostUser
 
 }
+
+
+export interface PostUser {
+  id: string;
+  username: string;
+  firstName: string;
+  lastName: string;
+};
