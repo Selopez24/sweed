@@ -11,25 +11,27 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Entypo";
 import { PostImages } from "../PostImages";
-import { HomeStackParams } from "src/navigators";
+import { DrawerStackParams } from "src/types/root";
+import { Post as PostType } from "src/types/post";
 
 interface PostProps {
   avatarImage: ImageSourcePropType;
-  username: string;
-  sweet: string;
-  date?: Date;
+  post: PostType;
   postImage: ImageSourcePropType[];
   favorites?: number;
   comments?: number;
   share?: number;
 }
 
-const Post = ({ avatarImage, username, sweet, postImage }: PostProps) => {
+const Post = ({ avatarImage, post, postImage }: PostProps) => {
+  const { user, content, updateDate } = post;
   const navigation =
-    useNavigation<NativeStackNavigationProp<HomeStackParams>>();
+    useNavigation<NativeStackNavigationProp<DrawerStackParams>>();
 
   const goToProfile = () => {
-    navigation.navigate("Profile");
+    navigation.navigate("Profile", {
+      userId: user.id,
+    });
   };
 
   return (
@@ -39,7 +41,7 @@ const Post = ({ avatarImage, username, sweet, postImage }: PostProps) => {
           <Image source={avatarImage} style={styles.avatarImage} />
         </Pressable>
         <View style={styles.postInfoContainer}>
-          <Text style={styles.username}>{username}</Text>
+          <Text style={styles.username}>{user.username}</Text>
           <Text style={styles.date}>- 1 hour ago</Text>
         </View>
         <View style={{ marginLeft: "auto" }}>
@@ -47,7 +49,7 @@ const Post = ({ avatarImage, username, sweet, postImage }: PostProps) => {
         </View>
       </View>
       <View style={styles.content}>
-        <Text style={styles.text}>{sweet}</Text>
+        <Text style={styles.text}>{content}</Text>
 
         {postImage?.length > 0 ? (
           <View style={styles.imageContainers}>

@@ -1,51 +1,53 @@
 import React from "react";
-import { ScrollView, StyleSheet } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import Post from "components/core/Post";
 import ProfileHeader from "components/core/ProfileHeader";
 import ghost from "assets/ghost.webp";
 import weedPost from "assets/weed-post.jpg";
 import weed2 from "assets/weed2.jpg";
-import { getUserPosts } from "src/api/user";
-import { useQuery } from "@tanstack/react-query";
+import { followUser, getUserPosts } from "src/api/user";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { RouteProp, useRoute } from "@react-navigation/native";
+import { EmptyContent } from "src/components/ui/EmptyContent";
+import { DrawerStackParams } from "src/types/root";
 import useUserStore from "src/stores/user/useUserStore";
-import { Post as PostType } from "src/types/post";
 
-
-const Profile = ({ }) => {
-
-  const userState = useUserStore(state => state.user)
+const Profile = () => {
+  const user = useUserStore((state) => state.user);
+  const { params } = useRoute<RouteProp<DrawerStackParams, "Profile">>();
 
   const { data: postData } = useQuery({
-    queryKey: ['profilePosts'],
-    queryFn: () => getUserPosts(userState?.id)
-  })
-
-
+    queryKey: ["profilePosts", params?.userId],
+    queryFn: async () => {
+      const idToGet = params?.userId ?? user?.id;
+      return await getUserPosts(idToGet);
+    },
+  });
 
   return (
-    <>
-      <ScrollView style={styles.homeContainer}>
-        <ProfileHeader avatarImage={ghost} />
-        {postData?.map(({ id, content, createDate, user }: PostType) => <Post
-          avatarImage={ghost}
-          username={user.username}
-          sweet={
-            content}
-          date={createDate}
-          postImage={[weed2, weedPost, weed2, weedPost]}
-          key={id}
-        />
+    <View style={styles.postsContainer}>
+      <FlatList
+        data={postData}
+        renderItem={({ item }) => (
+          <Post post={item} avatarImage={ghost} postImage={[weedPost]} />
         )}
-      </ScrollView>
-    </>
+        keyExtractor={(item) => item.id}
+        ListEmptyComponent={<EmptyContent type="sweeds" />}
+        ListHeaderComponent={
+          <ProfileHeader
+            avatarImage={ghost}
+            userId={params.userId ?? user?.id!}
+          />
+        }
+      />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  homeContainer: {
-    width: "100%",
-    margin: 0,
-    paddingHorizontal: 5,
+  postsContainer: {
+    flex: 1,
+    minHeight: 300,
   },
 });
 

@@ -1,6 +1,5 @@
-export type Image = {
-  id: string;
+export interface Post_Image {
   url: string;
-  createDate: Date;
-  updateDate: Date
+  name: string;
+  id: string;
 }
